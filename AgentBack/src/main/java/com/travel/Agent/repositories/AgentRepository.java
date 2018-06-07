@@ -9,5 +9,9 @@ import com.travel.Agent.model.Agent;
 public interface AgentRepository extends JpaRepository<Agent, Long>{
 	
 	Agent findByIdEquals(Long id);
+	
+	Agent findByEmailEqualsAndPasswordEquals(String email, String password);
+	
+	Agent findByEmailEquals(String email);
 
 }
