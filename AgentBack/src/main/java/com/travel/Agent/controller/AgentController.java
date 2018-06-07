@@ -1,5 +1,7 @@
 package com.travel.Agent.controller;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +45,7 @@ public class AgentController {
 		return new ResponseEntity<Agent>(agent, HttpStatus.OK);
 	}
 	
-	@PutMapping(value="/addAgent")
+	@PostMapping(value="/addAgent")
 	public ResponseEntity<Agent> addAgent(@RequestBody Agent agent){
 		
 		Agent agent1 =agentService.addAgent(agent);
@@ -50,8 +53,31 @@ public class AgentController {
 		if(agent1==null)
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		
-		return new ResponseEntity<>(agent1,HttpStatus.OK);
+		return new ResponseEntity<>(agent1,HttpStatus.OK);	
+	}
 	
+	@PostMapping(value="/login")
+	public ResponseEntity<Agent> loginAgent(@RequestBody Agent agent){
+		
+		Agent agent1 = agentService.login(agent.getEmail(), agent.getPassword());
+		
+		if(agent1==null) 
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+		
+		return new ResponseEntity<>(agent1,HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/registration")
+	public ResponseEntity<Agent> registrationAgent(@RequestBody Agent agent){
+		
+		Agent agent1 = null;
+		
+		if(agent1==null) 
+			return new ResponseEntity<>(agent1,HttpStatus.NOT_FOUND);
+		
+		
+		return new ResponseEntity<>(agent1,HttpStatus.OK);	
 	}
 
 }

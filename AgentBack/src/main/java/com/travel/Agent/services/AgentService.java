@@ -32,5 +32,17 @@ public class AgentService {
 		
 		return agent1;
 	}
+	
+	public Agent login(String email, String password) {
+		
+		Agent agent1 = agentRepository.findByEmailEqualsAndPasswordEquals(email, password);
+		
+		if(agent1.isApproved())
+			return agent1;
+		
+		return null;
+	}
+	
+	
 
 }
