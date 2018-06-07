@@ -13,11 +13,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+
 
 
 /**
@@ -47,12 +51,13 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "rating",
     "regUser",
-    "comment"
+    "comment",
+    "accommodation"
 })
 @XmlRootElement(name = "Review", namespace = "http://www.travel.com/review")
 @Entity
 public class Review {
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @XmlElement(name = "Id", namespace = "http://www.travel.com/review")
@@ -62,14 +67,19 @@ public class Review {
     @XmlElement(name = "Rating", namespace = "http://www.travel.com/review", defaultValue = "5")
     protected int rating;
 	
-	@Column
+	@OneToOne
     @XmlElement(name = "RegUser", namespace = "http://www.travel.com/reguser", required = true)
     protected RegUser regUser;
 	
-	@Column
+	@OneToOne
     @XmlElement(name = "Comment", namespace = "http://www.travel.com/comment", required = true)
     protected Comment comment;
-
+	
+	@ManyToOne
+	@XmlElement(name = "Accommodation", required = true)
+    protected Accommodation accommodation;
+	
+	
     /**
      * Gets the value of the id property.
      * 
@@ -149,5 +159,30 @@ public class Review {
     public void setComment(Comment value) {
         this.comment = value;
     }
+    
+    /**
+     * Gets the value of the accommodation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Accommodation }
+     *     
+     */
+    public Accommodation getAccommodation() {
+        return accommodation;
+    }
 
+    /**
+     * Sets the value of the accommodation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Accommodation }
+     *     
+     */
+    public void setAccommodation(Accommodation value) {
+        this.accommodation = value;
+    }
+    
+  
 }

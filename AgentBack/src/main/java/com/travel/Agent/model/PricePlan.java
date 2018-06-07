@@ -8,19 +8,21 @@
 
 package com.travel.Agent.model;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+
 
 
 /**
@@ -64,8 +66,16 @@ public class PricePlan {
     protected int roomType;
 	
 	@Column
-    @XmlElement(name = "Price", type = Integer.class, defaultValue = "0")
-    protected List<Integer> price;
+	@XmlElement(name = "Price", defaultValue = "0")
+    protected int price;
+	
+	@Column
+	@XmlElement(name = "Month", defaultValue = "0")
+    protected int month;
+	
+	@ManyToOne
+	@XmlElement(name = "Accommodation", required = true)
+    protected Accommodation accommodation;
 
     /**
      * Gets the value of the id property.
@@ -102,30 +112,57 @@ public class PricePlan {
     /**
      * Gets the value of the price property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the price property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPrice().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Integer }
-     * 
+     */
+    public int getPrice() {
+        return price;
+    }
+
+    /**
+     * Sets the value of the price property.
      * 
      */
-    public List<Integer> getPrice() {
-        if (price == null) {
-            price = new ArrayList<Integer>();
-        }
-        return this.price;
+    public void setPrice(int value) {
+        this.price = value;
+    }
+    
+    /**
+     * Gets the value of the month property.
+     * 
+     */
+    public int getMonth() {
+        return month;
+    }
+
+    /**
+     * Sets the value of the month property.
+     * 
+     */
+    public void setMonth(int value) {
+        this.month = value;
+    }
+    
+    /**
+     * Gets the value of the accommodation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Accommodation }
+     *     
+     */
+    public Accommodation getAccommodation() {
+        return accommodation;
+    }
+
+    /**
+     * Sets the value of the accommodation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Accommodation }
+     *     
+     */
+    public void setAccommodation(Accommodation value) {
+        this.accommodation = value;
     }
 
 }

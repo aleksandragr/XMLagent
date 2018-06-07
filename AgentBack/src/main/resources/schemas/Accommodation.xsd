@@ -3,9 +3,7 @@
     targetNamespace="http://www.travel.com/accommodation"
     xmlns:ac="http://www.travel.com/accommodation" xmlns:us="http://www.travel.com/user"
     xmlns:revi="http://www.travel.com/review" xmlns:age="http://www.travel.com/agent">
-    <xs:import namespace="http://www.travel.com/review" schemaLocation="Review.xsd"/>
-    <xs:import namespace="http://www.travel.com/agent" schemaLocation="Agent.xsd"/>
-    
+    <xs:import namespace="http://www.travel.com/agent" schemaLocation="Agent.xsd"/>    
     <xs:element name="Accommodation">
         <xs:complexType>
             <xs:sequence>
@@ -14,7 +12,6 @@
                 <xs:element name="Type" type="xs:string"/>
                 <xs:element ref="ac:Location"/>
                 <xs:element ref="age:Agent"/>
-                <xs:element maxOccurs="unbounded" minOccurs="0" ref="revi:Review"/>
                 <xs:element name="Description" type="xs:string"/>
                 <xs:element name="Rating" type="xs:int" default="5"/>
                 <xs:element name="Free" type="xs:boolean" default="true"/>               
@@ -27,7 +24,7 @@
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:element>
-                <xs:element maxOccurs="unbounded" minOccurs="0" ref="ac:PricePlan"/>
+               
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -61,7 +58,9 @@
             <xs:sequence>
             	<xs:element name="Id" type="xs:long"/>
                 <xs:element name="RoomType" type="xs:int" default="2"/>
-                <xs:element maxOccurs="12" minOccurs="0" name="Price" type="xs:int" default="0"/>
+                <xs:element name="Price" type="xs:int" default="0"/>
+                <xs:element name="Month" type="xs:int" default="0"/>
+                <xs:element ref="ac:Accommodation"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

@@ -11,8 +11,8 @@
             <xs:sequence>
             	<xs:element name="Id" type="xs:long"/>
                 <xs:element name="Price" type="xs:int" default="0"/>
-                <xs:element name="StartDate" type="xs:date"/>
-                <xs:element name="EndDate" type="xs:date"/>
+                <xs:element name="StartDate" type="xs:dateTime"/>
+                <xs:element name="EndDate" type="xs:dateTime"/>
                 <xs:element name="Name" type="xs:string"/>
                 <xs:element name="Surname" type="xs:string"/>
                 <xs:element name="Email" type="xs:string"/>

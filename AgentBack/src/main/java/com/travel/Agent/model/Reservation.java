@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -73,16 +75,14 @@ public class Reservation {
 	@Column
     @XmlElement(name = "Price", namespace = "http://www.travel.com/reservation", defaultValue = "0")
     protected int price;
-	
-	@Column
+		
     @XmlElement(name = "StartDate", namespace = "http://www.travel.com/reservation", required = true)
     @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar startDate;
+    protected String startDate;
 	
-	@Column
     @XmlElement(name = "EndDate", namespace = "http://www.travel.com/reservation", required = true)
     @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar endDate;
+    protected String endDate;
 	
 	@Column
     @XmlElement(name = "Name", namespace = "http://www.travel.com/reservation", required = true)
@@ -96,15 +96,16 @@ public class Reservation {
     @XmlElement(name = "Email", namespace = "http://www.travel.com/reservation", required = true)
     protected String email;
 	
-	@Column
+	@ManyToOne
     @XmlElement(name = "Room", namespace = "http://www.travel.com/room", required = true)
     protected Room room;
 	
-	@Column
+	@OneToOne
     @XmlElement(name = "RegUser", namespace = "http://www.travel.com/reguser", required = true)
     protected RegUser regUser;
 
     /**
+     * 
      * Gets the value of the id property.
      * 
      */
@@ -144,7 +145,7 @@ public class Reservation {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getStartDate() {
+/*    public XMLGregorianCalendar getStartDate() {
         return startDate;
     }
 
@@ -156,7 +157,7 @@ public class Reservation {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setStartDate(XMLGregorianCalendar value) {
+ /*   public void setStartDate(XMLGregorianCalendar value) {
         this.startDate = value;
     }
 
@@ -168,7 +169,7 @@ public class Reservation {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getEndDate() {
+   /* public XMLGregorianCalendar getEndDate() {
         return endDate;
     }
 
@@ -180,7 +181,7 @@ public class Reservation {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setEndDate(XMLGregorianCalendar value) {
+  /*  public void setEndDate(XMLGregorianCalendar value) {
         this.endDate = value;
     }
 
@@ -303,5 +304,21 @@ public class Reservation {
     public void setRegUser(RegUser value) {
         this.regUser = value;
     }
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 
 }

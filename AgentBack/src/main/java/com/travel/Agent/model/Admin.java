@@ -62,24 +62,29 @@ public class Admin {
     @XmlElement(name = "Id", namespace = "http://www.travel.com/admin")
     protected long id;
 	
-	@Column
+	
     @XmlElement(name = "Name", namespace = "http://www.travel.com/admin", required = true)
+    @Column
     protected String name;
 	
-	@Column
+	
     @XmlElement(name = "Surname", namespace = "http://www.travel.com/admin", required = true)
+    @Column
     protected String surname;
 	
-	@Column
+	
     @XmlElement(name = "Email", namespace = "http://www.travel.com/admin", required = true)
+    @Column
     protected String email;
 	
-	@Column
+	
     @XmlElement(name = "Password", namespace = "http://www.travel.com/admin", required = true)
+    @Column
     protected String password;
 	
-	@Column
+	
     @XmlElement(name = "Address", namespace = "http://www.travel.com/admin", required = true)
+    @Column
     protected String address;
 
     /**
