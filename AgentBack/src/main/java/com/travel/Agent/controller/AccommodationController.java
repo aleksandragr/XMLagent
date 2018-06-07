@@ -19,6 +19,12 @@ public class AccommodationController {
 	private AccommodationService accommodationService;
 	
 	
+	/**
+	 * 
+	 * Add new accommodation
+	 * @param accommodation
+	 * @return accommodation
+	 */
 	@PostMapping("/addAccommodation")
 	public ResponseEntity<Accommodation> addAccommodation(@RequestBody Accommodation accommodation) {
 		
