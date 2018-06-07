@@ -61,6 +61,23 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 public class Agent {
 
+	public Agent(long id, String name, String surname, String email, String password, String address,
+			String businessRegNum, boolean approved) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.password = password;
+		this.address = address;
+		this.businessRegNum = businessRegNum;
+		this.approved = approved;
+	}
+	
+	public Agent() {
+		
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @XmlElement(name = "Id", namespace = "http://www.travel.com/agent")
