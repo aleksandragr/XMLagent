@@ -4,12 +4,15 @@ package com.travel.Agent.dto;
 
 public class AccommodationDTO {
 
+	public AccommodationDTO() {
+		
+	}
 	
 	public AccommodationDTO(long idAccommodation, String name, String type, String description, int rating,
 			boolean free, int category, long idAdditionalS, boolean wiFi, boolean tv, boolean parking, boolean kitchen,
 			boolean breakfast, boolean halfBoard, boolean fullBoard, boolean bathroom, long idLocation, String country,
 			String city, String address, long idAgent) {
-		super();
+		
 		this.idAccommodation = idAccommodation;
 		this.name = name;
 		this.type = type;
