@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.travel.Agent.dto.AgentDTO;
 import com.travel.Agent.model.Agent;
 import com.travel.Agent.services.AgentService;
 
@@ -69,9 +70,9 @@ public class AgentController {
 	}
 	
 	@PostMapping(value="/registration")
-	public ResponseEntity<Agent> registrationAgent(@RequestBody Agent agent){
+	public ResponseEntity<Agent> registrationAgent(@RequestBody AgentDTO agent){
 		
-		Agent agent1 = null;
+		Agent agent1 = agentService.registration(agent);
 		
 		if(agent1==null) 
 			return new ResponseEntity<>(agent1,HttpStatus.NOT_FOUND);
