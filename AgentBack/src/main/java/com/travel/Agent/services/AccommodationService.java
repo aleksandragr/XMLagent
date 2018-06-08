@@ -69,7 +69,7 @@ public class AccommodationService {
 		accommodation.setType(acc.getType());
 		accommodation.setDescription(acc.getDescription());
 		accommodation.setRating(acc.getRating());
-		accommodation.setFree(acc.isFree());
+		accommodation.setFree(true);
 		accommodation.setCategory(acc.getCategory());
 		
 		accommodation.setAdditionalServices(additionalServices);
