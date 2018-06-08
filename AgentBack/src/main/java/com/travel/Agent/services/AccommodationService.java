@@ -59,8 +59,10 @@ public class AccommodationService {
 		locationRepository.save(location);
 		
 		//AGENT 
-		long agentid = acc.getIdAgent();
-		Agent agent = agentRepository.findByIdEquals(agentid);
+		//long agentid = acc.getIdAgent();
+		int y = 1;
+		Long id = new Long(y);
+		Agent agent = agentRepository.findByIdEquals(id);
 		
 		
 		//careate ACCOMMODATION
@@ -95,6 +97,48 @@ public class AccommodationService {
 		List<Accommodation> accommodations = accommodationRepository.findByAgent_idEquals(id);
 		
 		return accommodations;
+	}
+	
+	public Accommodation editAcc(Long id, AccommodationDTO acc) {
+		
+		Accommodation accommodation1=accommodationRepository.findByIdEquals(id);
+		if(accommodation1!=null) {
+			accommodation1.setName(acc.getName());
+			accommodation1.setType(acc.getType());
+			accommodation1.setDescription(acc.getDescription());
+			accommodation1.setRating(acc.getRating());
+			accommodation1.setFree(acc.isFree());
+			accommodation1.setCategory(acc.getCategory());
+		
+			//location
+		
+			Location location = locationRepository.findByIdEquals(accommodation1.getLocation().getId());
+		
+			location.setCountry(acc.getCountry());
+			location.setCity(acc.getCity());
+			location.setAddress(acc.getAddress());
+		
+			//additionalservices
+		
+			AdditionalServices ad = additionalServicesRepository.findByIdEquals(accommodation1.getAdditionalServices().getId());
+		
+			ad.setWiFi(acc.isWiFi());
+			ad.setTV(acc.isTv());
+			ad.setParking(acc.isParking());
+			ad.setKitchen(acc.isKitchen());
+			ad.setBreakfast(acc.isBreakfast());
+			ad.setHalfBoard(acc.isHalfBoard());
+			ad.setFullBoard(acc.isFullBoard());
+			ad.setBathroom(acc.isBathroom());
+		
+			accommodationRepository.save(accommodation1);
+			locationRepository.save(location);
+			additionalServicesRepository.save(ad);
+			
+			
+			return accommodation1;
+		}
+		return null;
 	}
 	
 }

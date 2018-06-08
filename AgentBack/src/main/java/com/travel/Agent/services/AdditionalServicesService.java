@@ -21,4 +21,11 @@ public class AdditionalServicesService {
 		
 	}
 	
+	public AdditionalServices findAS(Long id) {
+		
+		AdditionalServices ad = additionalServicesRepository.findByIdEquals(id);
+		
+		return ad;		
+	}
+	
 }

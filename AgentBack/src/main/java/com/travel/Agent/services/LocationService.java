@@ -19,4 +19,11 @@ public class LocationService {
 		
 		return location;
 	}
+	
+	public Location findLocation(Long id) {
+		
+		Location location = locationRepository.findByIdEquals(id);
+		
+		return location;
+	}
 }
