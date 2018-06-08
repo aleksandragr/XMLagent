@@ -1,5 +1,7 @@
 package com.travel.Agent.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -86,6 +88,13 @@ public class AccommodationService {
 		Accommodation acc = accommodationRepository.findByIdEquals(id);
 		
 		return acc;
+	}
+	
+	public List<Accommodation> getallAccOfAgent(Long id){
+		
+		List<Accommodation> accommodations = accommodationRepository.findByAgent_idEquals(id);
+		
+		return accommodations;
 	}
 	
 }
