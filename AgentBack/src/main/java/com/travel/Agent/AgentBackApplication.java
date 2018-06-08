@@ -1,5 +1,7 @@
 package com.travel.Agent;
 
+import java.net.URL;
+
 import javax.xml.soap.*;
 
 import org.springframework.boot.SpringApplication;
@@ -12,8 +14,8 @@ public class AgentBackApplication {
 		SpringApplication.run(AgentBackApplication.class, args);
 		
 		
-		String soapEndpointUrl = "https://www.travel.com/accommodationws";
-        String soapAction = "https://www.travel.com/accommodation/setAccommodationStatusRequest";
+		String soapEndpointUrl = "http://localhost:8085/accommodationws";
+        String soapAction = "http://www.travel.com/accommodation/setAccommodationStatusRequest";
 
         callSoapWebService(soapEndpointUrl, soapAction);
 		
@@ -23,7 +25,7 @@ public class AgentBackApplication {
         SOAPPart soapPart = soapMessage.getSOAPPart();
 
         String myNamespace = "gs";
-        String myNamespaceURI = "https://www.travel.com/accommodation";
+        String myNamespaceURI = "http://www.travel.com/accommodation";
 
         // SOAP Envelope
         SOAPEnvelope envelope = soapPart.getEnvelope();
@@ -60,7 +62,8 @@ public class AgentBackApplication {
             
             
             // Send SOAP Message to SOAP Server
-            SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(soapAction), soapEndpointUrl);
+            URL endpoint = new URL(soapEndpointUrl);
+            SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(soapAction),endpoint);
             
             System.out.println("USPESNOOOOOOOOOOOOOOOOOOOOOOOOOO " + soapResponse);
             
@@ -71,8 +74,8 @@ public class AgentBackApplication {
 
             soapConnection.close();
         } catch (Exception e) {
-            System.err.println("\nError occurred while sending SOAP Request to Server!\nMake sure you have the correct endpoint URL and SOAPAction!\n");
-            e.printStackTrace();
+            //System.err.println("\nError occurred while sending SOAP Request to Server!\nMake sure you have the correct endpoint URL and SOAPAction!\n");
+           // e.printStackTrace();
         }
     }
 
@@ -83,7 +86,8 @@ public class AgentBackApplication {
         createSoapEnvelope(soapMessage);
 
         MimeHeaders headers = soapMessage.getMimeHeaders();
-        headers.addHeader("SOAPAction", soapAction);
+       // headers.addHeader("SOAPAction", soapAction);
+        headers.setHeader("Content-Type", "text/xml");
 
         soapMessage.saveChanges();
 
