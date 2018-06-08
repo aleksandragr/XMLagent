@@ -1,5 +1,7 @@
 package com.travel.Agent.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,4 +56,19 @@ public class AccommodationController {
 		
 	}
 	
+	/**
+	 * get all accommodation of agent
+	 * @param id of agent
+	 * @return all accommodations
+	 */
+	@GetMapping("/getAllAccommodation/{id}")
+	public ResponseEntity<List<Accommodation>> getAllAccommodationOfAgent(@PathVariable Long id){
+		
+		List<Accommodation> accommodations = accommodationService.getallAccOfAgent(id);
+		
+		if(accommodations!=null) {
+			return new ResponseEntity<>(accommodations,HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 }
