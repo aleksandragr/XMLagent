@@ -51,6 +51,7 @@ public class AgentService {
 		
 		if(agent.getNewPassword().equals(agent.getRepeatPassword())) {
 			agent1.setName(agent.getName());
+			agent1.setSurname(agent.getSurname());
 			agent1.setPassword(agent.getPassword());
 			agent1.setEmail(agent.getEmail());
 			agent1.setPassword(agent.getNewPassword());
