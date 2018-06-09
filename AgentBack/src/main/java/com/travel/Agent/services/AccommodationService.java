@@ -14,6 +14,7 @@ import com.travel.Agent.repositories.AccommodationRepository;
 import com.travel.Agent.repositories.AdditionalServicesRepository;
 import com.travel.Agent.repositories.AgentRepository;
 import com.travel.Agent.repositories.LocationRepository;
+import com.travel.Agent.soap.AccommodationSoap;
 
 @Service
 public class AccommodationService {
@@ -80,6 +81,8 @@ public class AccommodationService {
 		
 		accommodationRepository.save(accommodation);
 		
+		AccommodationSoap accommodationsopa = new AccommodationSoap();
+		accommodationsopa.accommodationSoap("addAccommodation",acc);
 		
 		return accommodation;
 	}
