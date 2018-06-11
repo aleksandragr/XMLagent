@@ -84,10 +84,20 @@ public class AccommodationService {
 		
 		accommodationRepository.save(accommodation);
 		
-		int dvokrevetne = acc.getTwobads();
-		int trokrevetne = acc.getTheerebads();
-		int cetvorokrevetne = acc.getFourbads();
-		int petokrevetne = acc.getFivebads();
+		int jednokrevetne = acc.getOnebeds();
+		int dvokrevetne = acc.getTwobeds();
+		int trokrevetne = acc.getTheerebeds();
+		int cetvorokrevetne = acc.getFourbeds();
+		int petokrevetne = acc.getFivebeds();
+		
+		for(int i=0;i<jednokrevetne;i++) {
+			Room room = new Room();
+			room.setNumberOfBed(1);
+			room.setFree(true);
+			room.setAccommodation(accommodation);
+			roomRepository.save(room);
+		}
+		
 		
 		for(int i=0;i<dvokrevetne;i++) {
 			Room room = new Room();

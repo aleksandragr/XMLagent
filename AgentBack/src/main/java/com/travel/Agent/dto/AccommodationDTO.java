@@ -4,11 +4,14 @@ package com.travel.Agent.dto;
 
 public class AccommodationDTO {
 
+
+
 	public AccommodationDTO(long idAccommodation, String name, String type, String description, int rating,
 			boolean free, int category, long idAdditionalS, boolean wiFi, boolean tv, boolean parking, boolean kitchen,
 			boolean breakfast, boolean halfBoard, boolean fullBoard, boolean bathroom, long idLocation, String country,
-			String city, String address, int twobads, int theerebads, int fourbads, int fivebads, long idAgent) {
-		super();
+			String city, String address, int onebeds, int twobeds, int theerebeds, int fourbeds, int fivebeds,
+			long idAgent) {
+		
 		this.idAccommodation = idAccommodation;
 		this.name = name;
 		this.type = type;
@@ -29,10 +32,11 @@ public class AccommodationDTO {
 		this.country = country;
 		this.city = city;
 		this.address = address;
-		this.twobads = twobads;
-		this.theerebads = theerebads;
-		this.fourbads = fourbads;
-		this.fivebads = fivebads;
+		this.onebeds = onebeds;
+		this.twobeds = twobeds;
+		this.theerebeds = theerebeds;
+		this.fourbeds = fourbeds;
+		this.fivebeds = fivebeds;
 		this.idAgent = idAgent;
 	}
 
@@ -117,13 +121,15 @@ public class AccommodationDTO {
 	 * Rooms fields
 	 * 
 	 */
-	private int twobads;
+	private int onebeds;
 	
-	private int theerebads;
+	private int twobeds;
 	
-	private int fourbads;
+	private int theerebeds;
 	
-	private int fivebads;
+	private int fourbeds;
+	
+	private int fivebeds;
 	
 	
 	/**
@@ -307,36 +313,46 @@ public class AccommodationDTO {
 		this.idAgent = idAgent;
 	}
 
-	public int getTwobads() {
-		return twobads;
+	public int getOnebeds() {
+		return onebeds;
 	}
 
-	public void setTwobads(int twobads) {
-		this.twobads = twobads;
+	public void setOnebeds(int onebeds) {
+		this.onebeds = onebeds;
 	}
 
-	public int getTheerebads() {
-		return theerebads;
+	public int getTwobeds() {
+		return twobeds;
 	}
 
-	public void setTheerebads(int theerebads) {
-		this.theerebads = theerebads;
+	public void setTwobeds(int twobeds) {
+		this.twobeds = twobeds;
 	}
 
-	public int getFourbads() {
-		return fourbads;
+	public int getTheerebeds() {
+		return theerebeds;
 	}
 
-	public void setFourbads(int fourbads) {
-		this.fourbads = fourbads;
+	public void setTheerebeds(int theerebeds) {
+		this.theerebeds = theerebeds;
 	}
 
-	public int getFivebads() {
-		return fivebads;
+	public int getFourbeds() {
+		return fourbeds;
 	}
 
-	public void setFivebads(int fivebads) {
-		this.fivebads = fivebads;
+	public void setFourbeds(int fourbeds) {
+		this.fourbeds = fourbeds;
 	}
+
+	public int getFivebeds() {
+		return fivebeds;
+	}
+
+	public void setFivebeds(int fivebeds) {
+		this.fivebeds = fivebeds;
+	}
+
+	
 }
 

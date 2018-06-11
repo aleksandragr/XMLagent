@@ -102,6 +102,18 @@ public class AccommodationSoap {
         SOAPElement soapBodyElem15 = soapBodyElem.addChildElement("type", myNamespace);
         soapBodyElem15.addTextNode(accommodationDTO.getType());
         
+        SOAPElement soapBodyElem20 = soapBodyElem.addChildElement("onebadroom", myNamespace);
+        soapBodyElem20.addTextNode(Integer.toString(accommodationDTO.getOnebeds()));
+        SOAPElement soapBodyElem16 = soapBodyElem.addChildElement("twobadroom", myNamespace);
+        soapBodyElem16.addTextNode(Integer.toString(accommodationDTO.getTwobeds()));
+        SOAPElement soapBodyElem17 = soapBodyElem.addChildElement("threebadroom", myNamespace);
+        soapBodyElem17.addTextNode(Integer.toString(accommodationDTO.getTheerebeds()));
+        SOAPElement soapBodyElem18 = soapBodyElem.addChildElement("fourbadroom", myNamespace);
+        soapBodyElem18.addTextNode(Integer.toString(accommodationDTO.getFourbeds()));
+        SOAPElement soapBodyElem19 = soapBodyElem.addChildElement("fivedbadroom", myNamespace);
+        soapBodyElem19.addTextNode(Integer.toString(accommodationDTO.getFivebeds()));
+        
+        
         SOAPElement soapBodyElem6 = soapBodyElem.addChildElement("wifi", myNamespace);
         if(accommodationDTO.isWiFi()) {
         	soapBodyElem6.addTextNode("true");
