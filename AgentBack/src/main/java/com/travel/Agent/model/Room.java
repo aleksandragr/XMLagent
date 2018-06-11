@@ -70,7 +70,7 @@ public class Room {
 	@OneToOne
     @XmlElement(name = "Accommodation", required = true)
     protected Accommodation accommodation;
-
+	
     /**
      * Gets the value of the id property.
      * 

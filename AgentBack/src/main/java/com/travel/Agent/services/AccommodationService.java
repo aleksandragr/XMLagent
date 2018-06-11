@@ -10,10 +10,12 @@ import com.travel.Agent.model.Accommodation;
 import com.travel.Agent.model.AdditionalServices;
 import com.travel.Agent.model.Agent;
 import com.travel.Agent.model.Location;
+import com.travel.Agent.model.Room;
 import com.travel.Agent.repositories.AccommodationRepository;
 import com.travel.Agent.repositories.AdditionalServicesRepository;
 import com.travel.Agent.repositories.AgentRepository;
 import com.travel.Agent.repositories.LocationRepository;
+import com.travel.Agent.repositories.RoomRepository;
 import com.travel.Agent.soap.AccommodationSoap;
 
 @Service
@@ -31,7 +33,8 @@ public class AccommodationService {
 	@Autowired
 	private AgentRepository agentRepository;
 	
-	
+	@Autowired
+	private RoomRepository roomRepository;
 	
 	
 	public Accommodation addaccommodation(AccommodationDTO acc) {
@@ -80,6 +83,44 @@ public class AccommodationService {
 		accommodation.setAgent(agent);
 		
 		accommodationRepository.save(accommodation);
+		
+		int dvokrevetne = acc.getTwobads();
+		int trokrevetne = acc.getTheerebads();
+		int cetvorokrevetne = acc.getFourbads();
+		int petokrevetne = acc.getFivebads();
+		
+		for(int i=0;i<dvokrevetne;i++) {
+			Room room = new Room();
+			room.setNumberOfBed(2);
+			room.setFree(true);
+			room.setAccommodation(accommodation);
+			roomRepository.save(room);
+		}
+		
+		for(int i=0;i<trokrevetne;i++) {
+			Room room = new Room();
+			room.setNumberOfBed(3);
+			room.setFree(true);
+			room.setAccommodation(accommodation);
+			roomRepository.save(room);
+		}
+		
+		for(int i=0;i<cetvorokrevetne;i++) {
+			Room room = new Room();
+			room.setNumberOfBed(4);
+			room.setFree(true);
+			room.setAccommodation(accommodation);
+			roomRepository.save(room);
+		}
+		
+		for(int i=0;i<petokrevetne;i++) {
+			Room room = new Room();
+			room.setNumberOfBed(5);
+			room.setFree(true);
+			room.setAccommodation(accommodation);
+			roomRepository.save(room);
+		}
+		
 		
 		AccommodationSoap accommodationsopa = new AccommodationSoap();
 		accommodationsopa.accommodationSoap("addAccommodation",acc);

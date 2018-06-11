@@ -21,7 +21,6 @@ public class AccommodationSoap {
     	this.env = env;
     	
     	callSoapWebService(soapEndpointUrl, soapAction);
-    	
     }
 
 
@@ -84,19 +83,6 @@ public class AccommodationSoap {
         SOAPEnvelope envelope = soapPart.getEnvelope();
         envelope.addNamespaceDeclaration(myNamespace, myNamespaceURI);
         
-       
-        
-            /*
-            Constructed SOAP Request Message:
-            <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:myNamespace="http://www.webserviceX.NET">
-                <SOAP-ENV:Header/>
-                <SOAP-ENV:Body>
-                    <myNamespace:GetInfoByCity>
-                        <myNamespace:USCity>New York</myNamespace:USCity>
-                    </myNamespace:GetInfoByCity>
-                </SOAP-ENV:Body>
-            </SOAP-ENV:Envelope>
-            */
 
         // SOAP Body
         SOAPBody soapBody = envelope.getBody();

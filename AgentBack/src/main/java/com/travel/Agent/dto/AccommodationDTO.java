@@ -4,15 +4,11 @@ package com.travel.Agent.dto;
 
 public class AccommodationDTO {
 
-	public AccommodationDTO() {
-		
-	}
-	
 	public AccommodationDTO(long idAccommodation, String name, String type, String description, int rating,
 			boolean free, int category, long idAdditionalS, boolean wiFi, boolean tv, boolean parking, boolean kitchen,
 			boolean breakfast, boolean halfBoard, boolean fullBoard, boolean bathroom, long idLocation, String country,
-			String city, String address, long idAgent) {
-		
+			String city, String address, int twobads, int theerebads, int fourbads, int fivebads, long idAgent) {
+		super();
 		this.idAccommodation = idAccommodation;
 		this.name = name;
 		this.type = type;
@@ -33,8 +29,18 @@ public class AccommodationDTO {
 		this.country = country;
 		this.city = city;
 		this.address = address;
+		this.twobads = twobads;
+		this.theerebads = theerebads;
+		this.fourbads = fourbads;
+		this.fivebads = fivebads;
 		this.idAgent = idAgent;
 	}
+
+	public AccommodationDTO() {
+		
+	}
+	
+	
 
 	/**
 	 * 
@@ -105,7 +111,33 @@ public class AccommodationDTO {
 	
 	private String address;
 	
+	
+	/**
+	 * 
+	 * Rooms fields
+	 * 
+	 */
+	private int twobads;
+	
+	private int theerebads;
+	
+	private int fourbads;
+	
+	private int fivebads;
+	
+	
+	/**
+	 * 
+	 * Agent fields
+	 * 
+	 */
 	private long idAgent;
+	
+	
+	/**
+	 * 
+	 * constructors
+	 */
 
 	public long getIdAccommodation() {
 		return idAccommodation;
@@ -273,6 +305,38 @@ public class AccommodationDTO {
 
 	public void setIdAgent(long idAgent) {
 		this.idAgent = idAgent;
+	}
+
+	public int getTwobads() {
+		return twobads;
+	}
+
+	public void setTwobads(int twobads) {
+		this.twobads = twobads;
+	}
+
+	public int getTheerebads() {
+		return theerebads;
+	}
+
+	public void setTheerebads(int theerebads) {
+		this.theerebads = theerebads;
+	}
+
+	public int getFourbads() {
+		return fourbads;
+	}
+
+	public void setFourbads(int fourbads) {
+		this.fourbads = fourbads;
+	}
+
+	public int getFivebads() {
+		return fivebads;
+	}
+
+	public void setFivebads(int fivebads) {
+		this.fivebads = fivebads;
 	}
 }
 
