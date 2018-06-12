@@ -24,11 +24,11 @@ public class AdditionalServicesService {
 		return additionalServices;
 		
 	}
-	
+
 	public AdditionalServices findAS(Long id) {
 		
 		Accommodation accommodation = accommodationRepository.findByIdEquals(id);
-		AdditionalServices ad = additionalServicesRepository.findByIdEquals(accommodation.getAdditionalServices().getId());
+		AdditionalServices ad = additionalServicesRepository.findByIdEquals(id);
 		
 		return ad;		
 	}

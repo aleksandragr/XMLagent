@@ -42,6 +42,10 @@ public class AccommodationService {
 		//create ADDITIONAL SERVICES
 		AdditionalServices additionalServices = new AdditionalServices();
 		
+		
+	
+		
+		/*
 		additionalServices.setBathroom(acc.isBathroom());
 		additionalServices.setBreakfast(acc.isBreakfast());
 		additionalServices.setFullBoard(acc.isFullBoard());
@@ -50,7 +54,7 @@ public class AccommodationService {
 		additionalServices.setParking(acc.isParking());
 		additionalServices.setTV(acc.isTv());
 		additionalServices.setWiFi(acc.isWiFi());
-		
+		*/
 		additionalServicesRepository.save(additionalServices);
 		
 		//create LOCATION
@@ -78,7 +82,7 @@ public class AccommodationService {
 		accommodation.setFree(true);
 		accommodation.setCategory(acc.getCategory());
 		
-		accommodation.setAdditionalServices(additionalServices);
+		
 		accommodation.setLocation(location);
 		accommodation.setAgent(agent);
 		
@@ -174,8 +178,8 @@ public class AccommodationService {
 		
 			//additionalservices
 		
-			AdditionalServices ad = additionalServicesRepository.findByIdEquals(accommodation1.getAdditionalServices().getId());
-		
+			//AdditionalServices ad = additionalServicesRepository.findByIdEquals(accommodation1.getAdditionalServices().getId());
+		/*
 			ad.setWiFi(acc.isWiFi());
 			ad.setTV(acc.isTv());
 			ad.setParking(acc.isParking());
@@ -184,10 +188,10 @@ public class AccommodationService {
 			ad.setHalfBoard(acc.isHalfBoard());
 			ad.setFullBoard(acc.isFullBoard());
 			ad.setBathroom(acc.isBathroom());
-		
+		*/
 			accommodationRepository.save(accommodation1);
 			locationRepository.save(location);
-			additionalServicesRepository.save(ad);
+			//additionalServicesRepository.save(ad);
 			
 			AccommodationSoap accommodationSoap = new AccommodationSoap();
 			accommodationSoap.accommodationSoap("editAccommodation", acc);
@@ -196,6 +200,24 @@ public class AccommodationService {
 			return accommodation1;
 		}
 		return null;
+	}
+	
+	
+	public Accommodation reserveAcc(AccommodationDTO acc) {
+		
+		System.out.println("aaaaaaaaaaa " + acc.getIdAccommodation());
+		
+		Accommodation accommodation = accommodationRepository.findByIdEquals(acc.getIdAccommodation());
+		System.out.println("aaaaaaaaaaa " + acc.getReservedFrom());
+		accommodation.setReservedFrom(acc.getReservedFrom());
+		System.out.println("aaaaaaaaaaa " + acc.getReservedTo());
+		accommodation.setReservedTo(acc.getReservedTo());
+		
+		accommodation.setFree(false);
+		
+		accommodationRepository.save(accommodation);
+		
+		return accommodation;
 	}
 	
 }

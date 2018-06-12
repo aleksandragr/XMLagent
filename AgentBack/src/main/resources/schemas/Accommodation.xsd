@@ -10,6 +10,8 @@
             	<xs:element name="Id" type="xs:long"/>
                 <xs:element name="Name" type="xs:string"/>
                 <xs:element name="Type" type="xs:string"/>
+                <xs:element name="ReservedFrom" type="xs:string"/>
+                <xs:element name="ReservedTo" type="xs:string"/>
                 <xs:element ref="ac:Location"/>
                 <xs:element ref="age:Agent"/>
                 <xs:element name="Description" type="xs:string"/>
@@ -41,15 +43,10 @@
     <xs:element name="AdditionalServices">
         <xs:complexType>
             <xs:sequence>
-            	<xs:element name="Id" type="xs:long"/>
-                <xs:element name="WiFi" type="xs:boolean" default="false"/>
-                <xs:element name="TV" type="xs:boolean" default="false"/>
-                <xs:element name="Parking" type="xs:boolean" default="false"/>
-                <xs:element name="Kitchen" type="xs:boolean" default="false"/>
-                <xs:element name="Breakfast" type="xs:boolean" default="false"/>
-                <xs:element name="HalfBoard" type="xs:boolean" default="false"/>
-                <xs:element name="FullBoard" type="xs:boolean" default="false"/>
-                <xs:element name="Bathroom" type="xs:boolean" default="false"/>
+                <xs:element name="Id" type="xs:long"/>
+                <xs:element name="servicename" type="xs:string"/>
+                <xs:element ref="ac:Accommodation"/>
+                <xs:element name="has" type="xs:boolean"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

@@ -13,11 +13,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import com.travel.Agent.model.Accommodation;
 
 
 /**
@@ -31,14 +34,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
- *         &lt;element name="WiFi" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
- *         &lt;element name="TV" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
- *         &lt;element name="Parking" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
- *         &lt;element name="Kitchen" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
- *         &lt;element name="Breakfast" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
- *         &lt;element name="HalfBoard" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
- *         &lt;element name="FullBoard" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
- *         &lt;element name="Bathroom" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="servicename" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element ref="{http://www.travel.com/accommodation}Accommodation"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -49,15 +46,10 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id",
-    "wiFi",
-    "tv",
-    "parking",
-    "kitchen",
-    "breakfast",
-    "halfBoard",
-    "fullBoard",
-    "bathroom"
+		"id",
+	    "servicename",
+	    "accommodation",
+	    "has"
 })
 @XmlRootElement(name = "AdditionalServices")
 @Entity
@@ -69,36 +61,13 @@ public class AdditionalServices {
     protected long id;
 	
 	@Column
-    @XmlElement(name = "WiFi", defaultValue = "false")
-    protected boolean wiFi;
+    @XmlElement(required = true)
+    protected String servicename;
 	
-	@Column
-    @XmlElement(name = "TV", defaultValue = "false")
-    protected boolean tv;
 	
-	@Column
-    @XmlElement(name = "Parking", defaultValue = "false")
-    protected boolean parking;
-	
-	@Column
-    @XmlElement(name = "Kitchen", defaultValue = "false")
-    protected boolean kitchen;
-	
-	@Column
-    @XmlElement(name = "Breakfast", defaultValue = "false")
-    protected boolean breakfast;
-	
-	@Column
-    @XmlElement(name = "HalfBoard", defaultValue = "false")
-    protected boolean halfBoard;
-	
-	@Column
-    @XmlElement(name = "FullBoard", defaultValue = "false")
-    protected boolean fullBoard;
-	
-	@Column
-    @XmlElement(name = "Bathroom", defaultValue = "false")
-    protected boolean bathroom;
+	@ManyToOne
+    @XmlElement(name = "Accommodation", required = true)
+    protected Accommodation accommodation;
 
     /**
      * Gets the value of the id property.
@@ -117,131 +86,51 @@ public class AdditionalServices {
     }
 
     /**
-     * Gets the value of the wiFi property.
+     * Gets the value of the servicename property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public boolean isWiFi() {
-        return wiFi;
+    public String getServicename() {
+        return servicename;
     }
 
     /**
-     * Sets the value of the wiFi property.
+     * Sets the value of the servicename property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setWiFi(boolean value) {
-        this.wiFi = value;
+    public void setServicename(String value) {
+        this.servicename = value;
     }
 
     /**
-     * Gets the value of the tv property.
+     * Gets the value of the accommodation property.
      * 
+     * @return
+     *     possible object is
+     *     {@link Accommodation }
+     *     
      */
-    public boolean isTV() {
-        return tv;
+    public Accommodation getAccommodation() {
+        return accommodation;
     }
 
     /**
-     * Sets the value of the tv property.
+     * Sets the value of the accommodation property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Accommodation }
+     *     
      */
-    public void setTV(boolean value) {
-        this.tv = value;
-    }
-
-    /**
-     * Gets the value of the parking property.
-     * 
-     */
-    public boolean isParking() {
-        return parking;
-    }
-
-    /**
-     * Sets the value of the parking property.
-     * 
-     */
-    public void setParking(boolean value) {
-        this.parking = value;
-    }
-
-    /**
-     * Gets the value of the kitchen property.
-     * 
-     */
-    public boolean isKitchen() {
-        return kitchen;
-    }
-
-    /**
-     * Sets the value of the kitchen property.
-     * 
-     */
-    public void setKitchen(boolean value) {
-        this.kitchen = value;
-    }
-
-    /**
-     * Gets the value of the breakfast property.
-     * 
-     */
-    public boolean isBreakfast() {
-        return breakfast;
-    }
-
-    /**
-     * Sets the value of the breakfast property.
-     * 
-     */
-    public void setBreakfast(boolean value) {
-        this.breakfast = value;
-    }
-
-    /**
-     * Gets the value of the halfBoard property.
-     * 
-     */
-    public boolean isHalfBoard() {
-        return halfBoard;
-    }
-
-    /**
-     * Sets the value of the halfBoard property.
-     * 
-     */
-    public void setHalfBoard(boolean value) {
-        this.halfBoard = value;
-    }
-
-    /**
-     * Gets the value of the fullBoard property.
-     * 
-     */
-    public boolean isFullBoard() {
-        return fullBoard;
-    }
-
-    /**
-     * Sets the value of the fullBoard property.
-     * 
-     */
-    public void setFullBoard(boolean value) {
-        this.fullBoard = value;
-    }
-
-    /**
-     * Gets the value of the bathroom property.
-     * 
-     */
-    public boolean isBathroom() {
-        return bathroom;
-    }
-
-    /**
-     * Sets the value of the bathroom property.
-     * 
-     */
-    public void setBathroom(boolean value) {
-        this.bathroom = value;
+    public void setAccommodation(Accommodation value) {
+        this.accommodation = value;
     }
 
 }

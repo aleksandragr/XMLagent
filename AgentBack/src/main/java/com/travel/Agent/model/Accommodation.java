@@ -94,6 +94,15 @@ public class Accommodation {
     @XmlElement(name = "Type", required = true)
     protected String type;
 	
+	@Column
+	@XmlElement(name = "ReservedFrom", required = true)
+    protected String reservedFrom;
+	
+	@Column
+    @XmlElement(name = "ReservedTo", required = true)
+    protected String reservedTo;
+	
+	
 	@OneToOne
     @XmlElement(name = "Location", required = true)
     protected Location location;
@@ -114,9 +123,6 @@ public class Accommodation {
     @XmlElement(name = "Free", defaultValue = "true")
     protected boolean free;
 	
-	@OneToOne
-    @XmlElement(name = "AdditionalServices", required = true)
-    protected AdditionalServices additionalServices;
 	
 	@Column
     @XmlElement(name = "Category", defaultValue = "0")
@@ -187,6 +193,59 @@ public class Accommodation {
         this.type = value;
     }
 
+    
+    
+    /**
+     * Gets the value of the reservedFrom property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getReservedFrom() {
+        return reservedFrom;
+    }
+
+    /**
+     * Sets the value of the reservedFrom property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReservedFrom(String value) {
+        this.reservedFrom = value;
+    }
+
+    /**
+     * Gets the value of the reservedTo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getReservedTo() {
+        return reservedTo;
+    }
+
+    /**
+     * Sets the value of the reservedTo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReservedTo(String value) {
+        this.reservedTo = value;
+    }
+    
+    
+    
+    
     /**
      * Gets the value of the location property.
      * 
@@ -289,30 +348,6 @@ public class Accommodation {
      */
     public void setFree(boolean value) {
         this.free = value;
-    }
-
-    /**
-     * Gets the value of the additionalServices property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AdditionalServices }
-     *     
-     */
-    public AdditionalServices getAdditionalServices() {
-        return additionalServices;
-    }
-
-    /**
-     * Sets the value of the additionalServices property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AdditionalServices }
-     *     
-     */
-    public void setAdditionalServices(AdditionalServices value) {
-        this.additionalServices = value;
     }
 
     /**

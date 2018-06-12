@@ -85,4 +85,16 @@ public class AccommodationController {
 		
 		return new ResponseEntity<>(accommodation1,HttpStatus.OK);
 	}
+	
+	@PutMapping("/reserveaccommodation")
+	public ResponseEntity<Accommodation> reserveAccommodation(@RequestBody AccommodationDTO accommodationDTO){
+		
+		Accommodation accommodation = accommodationService.reserveAcc(accommodationDTO);
+		
+		if(accommodation!=null) {
+			return new ResponseEntity<>(accommodation,HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
 }

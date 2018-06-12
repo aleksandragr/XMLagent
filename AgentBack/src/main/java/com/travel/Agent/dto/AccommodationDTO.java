@@ -6,19 +6,22 @@ public class AccommodationDTO {
 
 
 
-	public AccommodationDTO(long id, String name, String type, String description, int rating,
-			boolean free, int category, long idAdditionalS, boolean wiFi, boolean tv, boolean parking, boolean kitchen,
-			boolean breakfast, boolean halfBoard, boolean fullBoard, boolean bathroom, long idLocation, String country,
-			String city, String address, int onebeds, int twobeds, int theerebeds, int fourbeds, int fivebeds,
-			long idAgent) {
-		
-		this.idAccommodation = id;
+	
+
+	public AccommodationDTO(long idAccommodation, String name, String type, String description, int rating,
+			boolean free, int category, String reservedFrom, String reservedTo, long idAdditionalS, boolean wiFi,
+			boolean tv, boolean parking, boolean kitchen, boolean breakfast, boolean halfBoard, boolean fullBoard,
+			boolean bathroom, long idLocation, String country, String city, String address, int onebeds, int twobeds,
+			int theerebeds, int fourbeds, int fivebeds, long idAgent) {
+		this.idAccommodation = idAccommodation;
 		this.name = name;
 		this.type = type;
 		this.description = description;
 		this.rating = rating;
 		this.free = free;
 		this.category = category;
+		this.reservedFrom = reservedFrom;
+		this.reservedTo = reservedTo;
 		this.idAdditionalS = idAdditionalS;
 		this.wiFi = wiFi;
 		this.tv = tv;
@@ -72,6 +75,9 @@ public class AccommodationDTO {
 	
 	private int category;
 	
+	private String reservedFrom;
+	
+	private String reservedTo;
 	
 
 	
@@ -353,6 +359,22 @@ public class AccommodationDTO {
 
 	public void setIdAccommodation(long id) {
 		this.idAccommodation = id;
+	}
+
+	public String getReservedFrom() {
+		return reservedFrom;
+	}
+
+	public void setReservedFrom(String reservedFrom) {
+		this.reservedFrom = reservedFrom;
+	}
+
+	public String getReservedTo() {
+		return reservedTo;
+	}
+
+	public void setReservedTo(String reservedTo) {
+		this.reservedTo = reservedTo;
 	}
 
 	
