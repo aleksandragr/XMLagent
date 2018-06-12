@@ -12,7 +12,7 @@ public class AccommodationDTO {
 			String city, String address, int onebeds, int twobeds, int theerebeds, int fourbeds, int fivebeds,
 			long idAgent) {
 		
-		this.id = id;
+		this.idAccommodation = id;
 		this.name = name;
 		this.type = type;
 		this.description = description;
@@ -52,7 +52,7 @@ public class AccommodationDTO {
 	 * 
 	 */
 
-    private long id;
+    private long idAccommodation;
 	
     private String name;
 	
@@ -347,12 +347,12 @@ public class AccommodationDTO {
 		this.fivebeds = fivebeds;
 	}
 
-	public long getId() {
-		return id;
+	public long getIdAccommodation() {
+		return idAccommodation;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setIdAccommodation(long id) {
+		this.idAccommodation = id;
 	}
 
 	

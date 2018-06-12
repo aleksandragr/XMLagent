@@ -10,7 +10,7 @@ import com.travel.Agent.model.Accommodation;
 @Repository
 public interface AccommodationRepository extends JpaRepository<Accommodation, Long> {
 
-	Accommodation findById(Long id);
+	Accommodation findByIdEquals(Long id);
 	
 	List<Accommodation> findByAgent_idEquals(Long id);
 }

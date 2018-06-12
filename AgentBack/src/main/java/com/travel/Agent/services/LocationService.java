@@ -27,7 +27,7 @@ public class LocationService {
 	
 	public Location findLocation(Long id) {
 		
-		Accommodation accommodation = accommodationRep.findById(id);
+		Accommodation accommodation = accommodationRep.findByIdEquals(id);
 		Location location = locationRepository.findByIdEquals(accommodation.getLocation().getId());
 		
 		return location;
