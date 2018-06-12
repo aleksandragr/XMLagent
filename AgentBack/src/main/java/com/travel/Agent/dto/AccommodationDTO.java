@@ -6,13 +6,13 @@ public class AccommodationDTO {
 
 
 
-	public AccommodationDTO(long idAccommodation, String name, String type, String description, int rating,
+	public AccommodationDTO(long id, String name, String type, String description, int rating,
 			boolean free, int category, long idAdditionalS, boolean wiFi, boolean tv, boolean parking, boolean kitchen,
 			boolean breakfast, boolean halfBoard, boolean fullBoard, boolean bathroom, long idLocation, String country,
 			String city, String address, int onebeds, int twobeds, int theerebeds, int fourbeds, int fivebeds,
 			long idAgent) {
 		
-		this.idAccommodation = idAccommodation;
+		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.description = description;
@@ -52,7 +52,7 @@ public class AccommodationDTO {
 	 * 
 	 */
 
-    private long idAccommodation;
+    private long id;
 	
     private String name;
 	
@@ -145,13 +145,7 @@ public class AccommodationDTO {
 	 * constructors
 	 */
 
-	public long getIdAccommodation() {
-		return idAccommodation;
-	}
-
-	public void setIdAccommodation(long idAccommodation) {
-		this.idAccommodation = idAccommodation;
-	}
+	
 
 	public String getName() {
 		return name;
@@ -351,6 +345,14 @@ public class AccommodationDTO {
 
 	public void setFivebeds(int fivebeds) {
 		this.fivebeds = fivebeds;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	

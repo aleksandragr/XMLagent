@@ -141,7 +141,7 @@ public class AccommodationService {
 	
 	public Accommodation findAccommodation(Long id) {
 		
-		Accommodation acc = accommodationRepository.findByIdEquals(id);
+		Accommodation acc = accommodationRepository.findById(id);
 		
 		return acc;
 	}
@@ -154,8 +154,8 @@ public class AccommodationService {
 	}
 	
 	public Accommodation editAcc(Long id, AccommodationDTO acc) {
-		
-		Accommodation accommodation1=accommodationRepository.findByIdEquals(id);
+		System.out.println(acc.getId);
+		Accommodation accommodation1=accommodationRepository.findById(id);
 		if(accommodation1!=null) {
 			accommodation1.setName(acc.getName());
 			accommodation1.setType(acc.getType());
@@ -163,7 +163,7 @@ public class AccommodationService {
 			accommodation1.setRating(acc.getRating());
 			accommodation1.setFree(acc.isFree());
 			accommodation1.setCategory(acc.getCategory());
-		
+			acc.setIdAccommodation(accommodation1.getIdAccommodation());
 			//location
 		
 			Location location = locationRepository.findByIdEquals(accommodation1.getLocation().getId());
@@ -188,6 +188,9 @@ public class AccommodationService {
 			accommodationRepository.save(accommodation1);
 			locationRepository.save(location);
 			additionalServicesRepository.save(ad);
+			
+			AccommodationSoap accommodationSoap = new AccommodationSoap();
+			accommodationSoap.accommodationSoap("editAccommodation", acc);
 			
 			
 			return accommodation1;

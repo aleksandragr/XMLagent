@@ -27,7 +27,7 @@ public class AdditionalServicesService {
 	
 	public AdditionalServices findAS(Long id) {
 		
-		Accommodation accommodation = accommodationRepository.findByIdEquals(id);
+		Accommodation accommodation = accommodationRepository.findByid_AccommodationEquals(id);
 		AdditionalServices ad = additionalServicesRepository.findByIdEquals(accommodation.getLocation().getId());
 		
 		return ad;		
