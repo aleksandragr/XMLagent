@@ -1,12 +1,18 @@
 package com.travel.Agent.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.concretepage.gs_ws.GetDistinctServicesResponse;
 import com.travel.Agent.model.Accommodation;
 import com.travel.Agent.model.AdditionalServices;
 import com.travel.Agent.repositories.AccommodationRepository;
 import com.travel.Agent.repositories.AdditionalServicesRepository;
+import com.travel.Agent.soap.AccommodationSoap;
+import com.travel.Agent.soap.AdditionalServiceSoap;
 
 @Service
 public class AdditionalServicesService {
@@ -33,4 +39,21 @@ public class AdditionalServicesService {
 		return ad;		
 	}
 	
+	
+	/**
+	 * Vrace sve dodatne usluge kao list stringova koje je admin napravio
+	 * 
+	 * @return
+	 */
+	public List<String> getserviceFromMain(){
+		
+		AdditionalServiceSoap additionalservicesoap = new AdditionalServiceSoap();
+		GetDistinctServicesResponse distinctService =  additionalservicesoap.additionalServiceSoap("getServices");
+		
+		ArrayList<String> services = new ArrayList<>();
+		
+		services.addAll(distinctService.getServices());
+		
+		return services;
+	}
 }

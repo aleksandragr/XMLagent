@@ -46,7 +46,6 @@
                 <xs:element name="Id" type="xs:long"/>
                 <xs:element name="servicename" type="xs:string"/>
                 <xs:element ref="ac:Accommodation"/>
-                <xs:element name="has" type="xs:boolean"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -61,4 +60,15 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    
+    
+     <xs:element name="getDistinctServicesResponse">
+        <xs:complexType>
+            <xs:sequence>
+           <xs:element maxOccurs="unbounded" minOccurs="0" name="services" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
 </xs:schema>

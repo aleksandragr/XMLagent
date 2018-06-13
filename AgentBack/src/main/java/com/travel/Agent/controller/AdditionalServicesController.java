@@ -1,5 +1,7 @@
 package com.travel.Agent.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +45,23 @@ public class AdditionalServicesController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(as,HttpStatus.OK);
+	}
+	
+	/**
+	 * Get 
+	 * @return
+	 */
+	@GetMapping("/getservices")
+	public ResponseEntity<List<String>> getservices(){
+		
+		List<String> services = additionalServicesService.getserviceFromMain();
+		
+		
+		if(services!=null) {
+			return new ResponseEntity<>(services,HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
 	}
 	
 }
