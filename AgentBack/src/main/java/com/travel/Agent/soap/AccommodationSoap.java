@@ -116,70 +116,12 @@ public class AccommodationSoap {
         SOAPElement soapBodyElem19 = soapBodyElem.addChildElement("fivedbadroom", myNamespace);
         soapBodyElem19.addTextNode(Integer.toString(accommodationDTO.getFivebeds()));
         
-        
-        SOAPElement soapBodyElem6 = soapBodyElem.addChildElement("wifi", myNamespace);
-        if(accommodationDTO.isWiFi()) {
-        	soapBodyElem6.addTextNode("true");
-        }
-        else {
-        	soapBodyElem6.addTextNode("false");
+        for(int i=0;i<accommodationDTO.getAditionalServices().size();i++) {
+        	SOAPElement soapBodyElem21 = soapBodyElem.addChildElement("services", myNamespace);
+            soapBodyElem21.addTextNode(accommodationDTO.getAditionalServices().get(i));    	
         }
         
-        SOAPElement soapBodyElem7 = soapBodyElem.addChildElement("tv", myNamespace);
-        if(accommodationDTO.isTv()) {
-        	soapBodyElem7.addTextNode("true");
-        }
-        else {
-        	soapBodyElem7.addTextNode("false");
-        }
         
-        SOAPElement soapBodyElem8 = soapBodyElem.addChildElement("parking", myNamespace);
-        if(accommodationDTO.isParking()) {
-        	soapBodyElem8.addTextNode("true");
-        }
-        else {
-        	soapBodyElem8.addTextNode("false");
-        }
-        
-        SOAPElement soapBodyElem9 = soapBodyElem.addChildElement("kitchen", myNamespace);
-        if(accommodationDTO.isKitchen()) {
-        	soapBodyElem9.addTextNode("true");
-        }
-        else {
-        	soapBodyElem9.addTextNode("false");
-        }
-        
-        SOAPElement soapBodyElem10 = soapBodyElem.addChildElement("breakfast", myNamespace);
-        if(accommodationDTO.isBreakfast()) {
-        	soapBodyElem10.addTextNode("true");
-        }
-        else {
-        	soapBodyElem10.addTextNode("false");
-        }
-        
-        SOAPElement soapBodyElem11 = soapBodyElem.addChildElement("halfBoard", myNamespace);
-        if(accommodationDTO.isHalfBoard()) {
-        	soapBodyElem11.addTextNode("true");
-        }
-        else {
-        	soapBodyElem11.addTextNode("false");
-        }
-        
-        SOAPElement soapBodyElem12 = soapBodyElem.addChildElement("fullBoard", myNamespace);
-        if(accommodationDTO.isFullBoard()) {
-        	soapBodyElem12.addTextNode("true");
-        }
-        else {
-        	soapBodyElem12.addTextNode("false");
-        }
-        
-        SOAPElement soapBodyElem13 = soapBodyElem.addChildElement("bathroom", myNamespace);
-        if(accommodationDTO.isBathroom()) {
-        	soapBodyElem13.addTextNode("true");
-        }
-        else {
-        	soapBodyElem13.addTextNode("false");
-        }
         
         
     }
