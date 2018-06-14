@@ -186,11 +186,13 @@ public class AccommodationService {
 			}
 			
 			List<String> as = acc.getAditionalServices();
-			for(int i=0; i<as.size();i++) {
-				AdditionalServices addit = new AdditionalServices();
-				addit.setServicename(as.get(i));
-				addit.setAccommodation(accommodation1);
-				additionalServicesRepository.save(addit);
+			if(as!=null) {
+				for(int i=0; i<as.size();i++) {
+					AdditionalServices addit = new AdditionalServices();
+					addit.setServicename(as.get(i));
+					addit.setAccommodation(accommodation1);
+					additionalServicesRepository.save(addit);
+				}
 			}
 			
 			accommodationRepository.save(accommodation1);
