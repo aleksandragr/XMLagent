@@ -56,4 +56,11 @@ public class AdditionalServicesService {
 		
 		return services;
 	}
+	
+	public List<AdditionalServices> getAllAS(){
+		
+		List<AdditionalServices> as = additionalServicesRepository.findAll();
+		
+		return as;
+	}
 }

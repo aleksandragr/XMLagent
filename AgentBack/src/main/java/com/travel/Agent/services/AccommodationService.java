@@ -1,6 +1,8 @@
 package com.travel.Agent.services;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +37,9 @@ public class AccommodationService {
 	
 	@Autowired
 	private RoomRepository roomRepository;
+	
+	@Autowired
+	private AdditionalServicesService additionalServicesService;
 	
 	
 	public Accommodation addaccommodation(AccommodationDTO acc) {
@@ -175,18 +180,16 @@ public class AccommodationService {
 			location.setAddress(acc.getAddress());
 		
 			//additionalservices
-		
-			//AdditionalServices ad = additionalServicesRepository.findByIdEquals(accommodation1.getAdditionalServices().getId());
-		/*
-			ad.setWiFi(acc.isWiFi());
-			ad.setTV(acc.isTv());
-			ad.setParking(acc.isParking());
-			ad.setKitchen(acc.isKitchen());
-			ad.setBreakfast(acc.isBreakfast());
-			ad.setHalfBoard(acc.isHalfBoard());
-			ad.setFullBoard(acc.isFullBoard());
-			ad.setBathroom(acc.isBathroom());
-		*/
+			List<AdditionalServices> addS = additionalServicesRepository.findByAccommodation_IdEquals(id);
+			for(int i=0; i<addS.size(); i++) {
+				additionalServicesRepository.delete(addS.get(i));
+			}
+			
+			List<String> as = acc.getAditionalServices();
+			for(int i=0; i<as.size();i++) {
+				
+			}
+			
 			accommodationRepository.save(accommodation1);
 			locationRepository.save(location);
 			//additionalServicesRepository.save(ad);
@@ -202,15 +205,11 @@ public class AccommodationService {
 	
 	
 	public Accommodation reserveAcc(AccommodationDTO acc) {
-		
-		System.out.println("aaaaaaaaaaa " + acc.getIdAccommodation());
-		
+				
 		Accommodation accommodation = accommodationRepository.findByIdEquals(acc.getIdAccommodation());
-		System.out.println("aaaaaaaaaaa " + acc.getReservedFrom());
-		accommodation.setReservedFrom(acc.getReservedFrom());
-		System.out.println("aaaaaaaaaaa " + acc.getReservedTo());
-		accommodation.setReservedTo(acc.getReservedTo());
 		
+		accommodation.setReservedFrom(acc.getReservedFrom());		
+		accommodation.setReservedTo(acc.getReservedTo());	
 		accommodation.setFree(false);
 		
 		accommodationRepository.save(accommodation);
