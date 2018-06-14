@@ -1,6 +1,6 @@
 package com.travel.Agent.dto;
 
-
+import java.util.List;
 
 public class AccommodationDTO {
 
@@ -8,11 +8,13 @@ public class AccommodationDTO {
 
 	
 
+	
 	public AccommodationDTO(long idAccommodation, String name, String type, String description, int rating,
-			boolean free, int category, String reservedFrom, String reservedTo, long idAdditionalS, boolean wiFi,
-			boolean tv, boolean parking, boolean kitchen, boolean breakfast, boolean halfBoard, boolean fullBoard,
-			boolean bathroom, long idLocation, String country, String city, String address, int onebeds, int twobeds,
-			int theerebeds, int fourbeds, int fivebeds, long idAgent) {
+			boolean free, int category, String reservedFrom, String reservedTo, List<String> aditionalServices,
+			long idAdditionalS, boolean wiFi, boolean tv, boolean parking, boolean kitchen, boolean breakfast,
+			boolean halfBoard, boolean fullBoard, boolean bathroom, long idLocation, String country, String city,
+			String address, int onebeds, int twobeds, int theerebeds, int fourbeds, int fivebeds, long idAgent) {
+		
 		this.idAccommodation = idAccommodation;
 		this.name = name;
 		this.type = type;
@@ -22,6 +24,7 @@ public class AccommodationDTO {
 		this.category = category;
 		this.reservedFrom = reservedFrom;
 		this.reservedTo = reservedTo;
+		this.aditionalServices = aditionalServices;
 		this.idAdditionalS = idAdditionalS;
 		this.wiFi = wiFi;
 		this.tv = tv;
@@ -86,6 +89,9 @@ public class AccommodationDTO {
 	 * additionalServices fields
 	 * 
 	 */
+	
+	private List<String> aditionalServices;
+	
 
 	private long idAdditionalS;
 	
@@ -375,6 +381,14 @@ public class AccommodationDTO {
 
 	public void setReservedTo(String reservedTo) {
 		this.reservedTo = reservedTo;
+	}
+
+	public List<String> getAditionalServices() {
+		return aditionalServices;
+	}
+
+	public void setAditionalServices(List<String> aditionalServices) {
+		this.aditionalServices = aditionalServices;
 	}
 
 	

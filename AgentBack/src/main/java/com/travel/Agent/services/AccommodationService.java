@@ -39,34 +39,17 @@ public class AccommodationService {
 	
 	public Accommodation addaccommodation(AccommodationDTO acc) {
 		
-		//create ADDITIONAL SERVICES
-		AdditionalServices additionalServices = new AdditionalServices();
-		
-		
-	
-		
-		/*
-		additionalServices.setBathroom(acc.isBathroom());
-		additionalServices.setBreakfast(acc.isBreakfast());
-		additionalServices.setFullBoard(acc.isFullBoard());
-		additionalServices.setHalfBoard(acc.isHalfBoard());
-		additionalServices.setKitchen(acc.isKitchen());
-		additionalServices.setParking(acc.isParking());
-		additionalServices.setTV(acc.isTv());
-		additionalServices.setWiFi(acc.isWiFi());
-		*/
-		additionalServicesRepository.save(additionalServices);
-		
 		//create LOCATION
 		Location location = new Location();
-		
+				
 		location.setCountry(acc.getCountry());
 		location.setCity(acc.getCity());
 		location.setAddress(acc.getAddress());
-		
+				
 		locationRepository.save(location);
 		
-		//AGENT 
+		
+		//create AGENT 
 		//long agentid = acc.getIdAgent();
 		int y = 1;
 		Long id = new Long(y);
@@ -88,6 +71,21 @@ public class AccommodationService {
 		
 		accommodationRepository.save(accommodation);
 		
+		
+		
+		//create ADDITIONAL SERVICES
+	
+		List<String> services = acc.getAditionalServices();
+		for(int i = 0; i<services.size();i++) {
+			AdditionalServices additionalservice = new AdditionalServices();
+			additionalservice.setAccommodation(accommodation);
+			additionalservice.setServicename(services.get(i));
+			additionalServicesRepository.save(additionalservice);
+		}
+			
+		
+		
+		//create ROOM
 		int jednokrevetne = acc.getOnebeds();
 		int dvokrevetne = acc.getTwobeds();
 		int trokrevetne = acc.getTheerebeds();

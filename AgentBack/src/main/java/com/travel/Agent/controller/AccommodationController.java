@@ -35,7 +35,7 @@ public class AccommodationController {
 	 */
 	@PostMapping("/addAccommodation")
 	public ResponseEntity<Accommodation> addAccommodation(@RequestBody AccommodationDTO accommodation) {
-		
+	
 		Accommodation acc = accommodationService.addaccommodation(accommodation);
 		
 		if(acc!=null) {
