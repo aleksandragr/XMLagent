@@ -140,9 +140,8 @@ public class AccommodationSoap {
         // SOAP Body
         SOAPBody soapBody = envelope.getBody();
         SOAPElement soapBodyElem = soapBody.addChildElement("editAccommodationRequest", myNamespace);
-        SOAPElement soapBodyElem1 = soapBodyElem.addChildElement("id", myNamespace);
+        SOAPElement soapBodyElem1 = soapBodyElem.addChildElement("Id", myNamespace);
         soapBodyElem1.addTextNode(Long.toString(accommodationDTO.getIdAccommodation()));
-        System.out.println("aaaaaaaaaaaaaaaaaaaa " + accommodationDTO.getIdAccommodation());
         SOAPElement soapBodyElem2 = soapBodyElem.addChildElement("name", myNamespace);
         soapBodyElem2.addTextNode(accommodationDTO.getName());
         SOAPElement soapBodyElem3 = soapBodyElem.addChildElement("type", myNamespace);

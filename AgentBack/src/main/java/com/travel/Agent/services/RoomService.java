@@ -1,8 +1,12 @@
 package com.travel.Agent.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mysql.fabric.xmlrpc.base.Array;
 import com.travel.Agent.model.Room;
 import com.travel.Agent.repositories.RoomRepository;
 
@@ -18,6 +22,30 @@ public class RoomService {
 		Room room = roomRepository.save(r);
 		return room;
 		
+	}
+
+	/**
+	 * 
+	 * @return 
+	 * @return tipove soba koje ima accommodation(jednokrevetna,dvokrevetna...)
+	 */
+	public List<Room>  getRoomsOfAccommodation(Long id){
+		
+		
+		List<Room> rooms = roomRepository.findByAccommodation_idEquals(id);
+		List<Integer> typeOfRoom = new ArrayList<>();
+		
+		for(int i = 0;i<rooms.size();i++) {
+			
+			if((!typeOfRoom.contains(rooms.get(i).getNumberOfBed()))) {
+				typeOfRoom.add(rooms.get(i).getNumberOfBed());
+			}
+			
+		}
+		
+		
+		
+		return null;
 	}
 	
 	
