@@ -20,7 +20,7 @@ public class PricePlanService {
 	@Autowired
 	private AccommodationRepository accommodationRepository; 
 	
-	public List<PricePlanDTO> addPricePlan(PricePlanDTO pricePdto) {
+	public PricePlanDTO addPricePlan(PricePlanDTO pricePdto) {
 		
 		Accommodation accommodation = accommodationRepository.findByIdEquals(Long.valueOf(pricePdto.getIdAccommodation())); 
 		
@@ -108,7 +108,7 @@ public class PricePlanService {
 		pricePlan12.setPrice(pricePdto.getDecember());
 		pricePlanRepository.save(pricePlan12);
 		
-		return null;
+		return pricePdto;
 	}
 	
 }

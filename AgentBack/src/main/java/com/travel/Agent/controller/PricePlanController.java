@@ -25,9 +25,9 @@ public class PricePlanController {
 	private PricePlanService pricePlanService;
 	
 	@PostMapping("/addpriceplan")
-	public ResponseEntity<List<PricePlanDTO>> addpriceplan(@RequestBody PricePlanDTO pricePlanDto){
+	public ResponseEntity<PricePlanDTO> addpriceplan(@RequestBody PricePlanDTO pricePlanDto){
 		
-		List<PricePlanDTO> pricePlans = pricePlanService.addPricePlan(pricePlanDto);
+		PricePlanDTO pricePlans = pricePlanService.addPricePlan(pricePlanDto);
 		
 		if(pricePlans!=null) {
 			return new ResponseEntity<>(pricePlans,HttpStatus.OK);
