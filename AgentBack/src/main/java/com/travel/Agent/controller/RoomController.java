@@ -25,9 +25,9 @@ public class RoomController {
 	
 	
 	@GetMapping("/roomsOfAcc/{id}")
-	public ResponseEntity<List<Room>> getRoomsOfAcc(@PathVariable Long id){
+	public ResponseEntity<List<String>> getRoomsOfAcc(@PathVariable Long id){
 		
-		List<Room> rooms = roomService.getRoomsOfAccommodation(id);
+		List<String> rooms = roomService.getRoomsOfAccommodation(id);
 		
 		if(rooms!=null) {
 			return new ResponseEntity<>(rooms,HttpStatus.OK);

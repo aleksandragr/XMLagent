@@ -29,23 +29,21 @@ public class RoomService {
 	 * @return 
 	 * @return tipove soba koje ima accommodation(jednokrevetna,dvokrevetna...)
 	 */
-	public List<Room>  getRoomsOfAccommodation(Long id){
+	public List<String>  getRoomsOfAccommodation(Long id){
 		
 		
 		List<Room> rooms = roomRepository.findByAccommodation_idEquals(id);
-		List<Integer> typeOfRoom = new ArrayList<>();
+		List<String> typeOfRoom = new ArrayList<>();
 		
 		for(int i = 0;i<rooms.size();i++) {
 			
-			if((!typeOfRoom.contains(rooms.get(i).getNumberOfBed()))) {
-				typeOfRoom.add(rooms.get(i).getNumberOfBed());
+			if((!typeOfRoom.contains(Integer.toString(rooms.get(i).getNumberOfBed())))) {
+				typeOfRoom.add(Integer.toString(rooms.get(i).getNumberOfBed()));
 			}
 			
 		}
-		
-		
-		
-		return null;
+
+		return typeOfRoom;
 	}
 	
 	
