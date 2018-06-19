@@ -1,12 +1,21 @@
 package com.travel.Agent.services;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.travel.Agent.dto.AccommodationDTO;
 import com.travel.Agent.model.Accommodation;
 import com.travel.Agent.model.AdditionalServices;
@@ -215,7 +224,26 @@ public class AccommodationService {
 		
 		accommodation.setReservedFrom(acc.getReservedFrom());		
 		accommodation.setReservedTo(acc.getReservedTo());	
-		accommodation.setFree(false);
+		
+		
+
+		
+		 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+		 LocalDate reservedfrom = LocalDate.parse(acc.getReservedFrom(), formatter);
+		 LocalDate reservedto = LocalDate.parse(acc.getReservedTo(), formatter);
+		 System.out.println(reservedfrom);  
+		 System.out.println(reservedto); 
+		 
+		 LocalDate localDate = LocalDate.now();
+		
+		 if(localDate.isAfter(reservedfrom) && localDate.isBefore(reservedto)) {
+			 accommodation.setFree(false);
+		 }
+		 
+		
+		
+		
+		
 		
 		accommodationRepository.save(accommodation);
 		

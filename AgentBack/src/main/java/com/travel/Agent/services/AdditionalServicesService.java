@@ -51,8 +51,10 @@ public class AdditionalServicesService {
 		GetDistinctServicesResponse distinctService =  additionalservicesoap.additionalServiceSoap("getServices");
 		
 		ArrayList<String> services = new ArrayList<>();
+		if(distinctService!=null) {
+			services.addAll(distinctService.getServices());
+		}
 		
-		services.addAll(distinctService.getServices());
 		
 		return services;
 	}

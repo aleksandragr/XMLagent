@@ -30,7 +30,7 @@ public class AdditionalServiceSoap {
     private static String env;
     
     public GetDistinctServicesResponse additionalServiceSoap(String env) {
-    
+    	
     	this.env = env;
     	
     	callSoapWebService(soapEndpointUrl, soapAction);
@@ -58,7 +58,8 @@ public class AdditionalServiceSoap {
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             GetDistinctServicesResponse additionalServices = (GetDistinctServicesResponse) jaxbUnmarshaller.unmarshal(soapResponse.getSOAPBody().extractContentAsDocument());
             distinctService=additionalServices;
-
+            
+            
             /*
             //Print the SOAP Response
             System.out.println("Response SOAP Message:");
@@ -107,7 +108,7 @@ public class AdditionalServiceSoap {
         SOAPEnvelope envelope = soapPart.getEnvelope();
         envelope.addNamespaceDeclaration(myNamespace, myNamespaceURI);
         
-
+       
         // SOAP Body
         SOAPBody soapBody = envelope.getBody();
         SOAPElement soapBodyElem = soapBody.addChildElement("getDistinctServicesRequest", myNamespace);
