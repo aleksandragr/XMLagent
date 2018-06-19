@@ -25,6 +25,8 @@ import javax.xml.bind.annotation.XmlType;
 
 
 
+
+
 /**
  * <p>Java class for anonymous complex type.
  * 
@@ -50,7 +52,19 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "id",
     "roomType",
-    "price"
+    "price",
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december"
 })
 @XmlRootElement(name = "PricePlan")
 @Entity
@@ -65,19 +79,38 @@ public class PricePlan {
     @XmlElement(name = "RoomType", defaultValue = "2")
     protected int roomType;
 	
-	@Column
-	@XmlElement(name = "Price", defaultValue = "0")
-    protected int price;
 	
-	@Column
-	@XmlElement(name = "Month", defaultValue = "0")
-    protected int month;
 	
 	@ManyToOne
 	@XmlElement(name = "Accommodation", required = true)
     protected Accommodation accommodation;
 
-    /**
+	protected int january;
+	
+	protected int february;
+	
+	protected int march;
+	
+	protected int april;
+	
+	protected int may;
+	
+	protected int june;
+	
+	protected int july;
+	
+	protected int august;
+	
+	protected int september;
+	
+	protected int october;
+	
+	protected int november;
+	
+	protected int december;
+	
+	
+	   /**
      * Gets the value of the id property.
      * 
      */
@@ -109,38 +142,7 @@ public class PricePlan {
         this.roomType = value;
     }
 
-    /**
-     * Gets the value of the price property.
-     * 
-     */
-    public int getPrice() {
-        return price;
-    }
-
-    /**
-     * Sets the value of the price property.
-     * 
-     */
-    public void setPrice(int value) {
-        this.price = value;
-    }
-    
-    /**
-     * Gets the value of the month property.
-     * 
-     */
-    public int getMonth() {
-        return month;
-    }
-
-    /**
-     * Sets the value of the month property.
-     * 
-     */
-    public void setMonth(int value) {
-        this.month = value;
-    }
-    
+   
     /**
      * Gets the value of the accommodation property.
      * 
@@ -164,5 +166,198 @@ public class PricePlan {
     public void setAccommodation(Accommodation value) {
         this.accommodation = value;
     }
+
+    /**
+     * Gets the value of the january property.
+     * 
+     */
+    public int getJanuary() {
+        return january;
+    }
+
+    /**
+     * Sets the value of the january property.
+     * 
+     */
+    public void setJanuary(int value) {
+        this.january = value;
+    }
+
+    /**
+     * Gets the value of the february property.
+     * 
+     */
+    public int getFebruary() {
+        return february;
+    }
+
+    /**
+     * Sets the value of the february property.
+     * 
+     */
+    public void setFebruary(int value) {
+        this.february = value;
+    }
+
+    /**
+     * Gets the value of the march property.
+     * 
+     */
+    public int getMarch() {
+        return march;
+    }
+
+    /**
+     * Sets the value of the march property.
+     * 
+     */
+    public void setMarch(int value) {
+        this.march = value;
+    }
+
+    /**
+     * Gets the value of the april property.
+     * 
+     */
+    public int getApril() {
+        return april;
+    }
+
+    /**
+     * Sets the value of the april property.
+     * 
+     */
+    public void setApril(int value) {
+        this.april = value;
+    }
+
+    /**
+     * Gets the value of the may property.
+     * 
+     */
+    public int getMay() {
+        return may;
+    }
+
+    /**
+     * Sets the value of the may property.
+     * 
+     */
+    public void setMay(int value) {
+        this.may = value;
+    }
+
+    /**
+     * Gets the value of the june property.
+     * 
+     */
+    public int getJune() {
+        return june;
+    }
+
+    /**
+     * Sets the value of the june property.
+     * 
+     */
+    public void setJune(int value) {
+        this.june = value;
+    }
+
+    /**
+     * Gets the value of the july property.
+     * 
+     */
+    public int getJuly() {
+        return july;
+    }
+
+    /**
+     * Sets the value of the july property.
+     * 
+     */
+    public void setJuly(int value) {
+        this.july = value;
+    }
+
+    /**
+     * Gets the value of the august property.
+     * 
+     */
+    public int getAugust() {
+        return august;
+    }
+
+    /**
+     * Sets the value of the august property.
+     * 
+     */
+    public void setAugust(int value) {
+        this.august = value;
+    }
+
+    /**
+     * Gets the value of the september property.
+     * 
+     */
+    public int getSeptember() {
+        return september;
+    }
+
+    /**
+     * Sets the value of the september property.
+     * 
+     */
+    public void setSeptember(int value) {
+        this.september = value;
+    }
+
+    /**
+     * Gets the value of the october property.
+     * 
+     */
+    public int getOctober() {
+        return october;
+    }
+
+    /**
+     * Sets the value of the october property.
+     * 
+     */
+    public void setOctober(int value) {
+        this.october = value;
+    }
+
+    /**
+     * Gets the value of the november property.
+     * 
+     */
+    public int getNovember() {
+        return november;
+    }
+
+    /**
+     * Sets the value of the november property.
+     * 
+     */
+    public void setNovember(int value) {
+        this.november = value;
+    }
+
+    /**
+     * Gets the value of the december property.
+     * 
+     */
+    public int getDecember() {
+        return december;
+    }
+
+    /**
+     * Sets the value of the december property.
+     * 
+     */
+    public void setDecember(int value) {
+        this.december = value;
+    }
+
 
 }

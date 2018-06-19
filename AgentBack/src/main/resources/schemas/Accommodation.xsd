@@ -55,8 +55,20 @@
             	<xs:element name="Id" type="xs:long"/>
                 <xs:element name="RoomType" type="xs:int" default="2"/>
                 <xs:element name="Price" type="xs:int" default="0"/>
-                <xs:element name="Month" type="xs:int" default="0"/>
+               
                 <xs:element ref="ac:Accommodation"/>
+                <xs:element name="january" type="xs:int"/>
+                <xs:element name="february" type="xs:int"/>
+                <xs:element name="march" type="xs:int"/>
+                <xs:element name="april" type="xs:int"/>
+                <xs:element name="may" type="xs:int"/>
+                <xs:element name="june" type="xs:int"/>
+                <xs:element name="july" type="xs:int"/>
+                <xs:element name="august" type="xs:int"/>
+                <xs:element name="september" type="xs:int"/>
+                <xs:element name="october" type="xs:int"/>
+                <xs:element name="november" type="xs:int"/>
+                <xs:element name="december" type="xs:int"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
