@@ -96,7 +96,7 @@ public class AccommodationSoap {
         SOAPBody soapBody = envelope.getBody();
         SOAPElement soapBodyElem = soapBody.addChildElement("setAccommodationOccupationDatesRequest", myNamespace);
         SOAPElement soapBodyElem1 = soapBodyElem.addChildElement("id", myNamespace);
-        soapBodyElem1.addTextNode("5");
+        soapBodyElem1.addTextNode(Long.toString(accommodationDTO.getIdAccommodation()));
         SOAPElement soapBodyElem2 = soapBodyElem.addChildElement("datefrom", myNamespace);
         soapBodyElem2.addTextNode(accommodationDTO.getReservedFrom());
         SOAPElement soapBodyElem3 = soapBodyElem.addChildElement("dateto", myNamespace);
