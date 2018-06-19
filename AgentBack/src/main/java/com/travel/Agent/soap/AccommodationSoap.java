@@ -199,7 +199,10 @@ public class AccommodationSoap {
         SOAPElement soapBodyElem17 = soapBodyElem.addChildElement("category", myNamespace);
         soapBodyElem17.addTextNode(Integer.toString(accommodationDTO.getCategory()));
         
-        
+        for(int i=0;i<accommodationDTO.getAditionalServices().size();i++) {
+        	SOAPElement soapBodyElem21 = soapBodyElem.addChildElement("services", myNamespace);
+            soapBodyElem21.addTextNode(accommodationDTO.getAditionalServices().get(i));  	
+        }
     }	
 	
 }
