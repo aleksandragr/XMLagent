@@ -1,2 +1,10 @@
 INSERT INTO `xmlagent`.`agent` (`name`, `surname`, `approved`, `email`, `password`) VALUES ('Dragan','Dulic',1,'dragan.dulic1@gmail.com','vvvv');
 INSERT INTO `xmlagent`.`agent` (`name`, `surname`, `approved`, `email`, `password`) VALUES ('Mika','Mikic',1,'donthavename3478@gmail.com','aaaa');
+INSERT INTO `xmlagent`.`accommodation` (`reserved_from`,`reserved_to`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`,`category`) VALUES ('01.07.2018','07.07.2018','Kod sajma',1,'Master','2','1','1','0');
+INSERT INTO `xmlagent`.`location` (`address`,`city`,`country`) VALUES ('Jevrejska 1','Novi Sad','Srbija');
+INSERT INTO `xmlagent`.`accommodation` (`reserved_from`,`reserved_to`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`,`category`) VALUES ('16.06.2018','20.06.2018','Centar',1,'Centar','4','1','2','0');
+INSERT INTO `xmlagent`.`location` (`address`,`city`,`country`) VALUES ('Bul. Kralja Petra 4','Beograd','Srbija');
+INSERT INTO `xmlagent`.`accommodation` (`reserved_from`,`reserved_to`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`,`category`) VALUES ('20.06.2018','27.06.2018','Dobar sa bazenom',0,'Novi Sad','3','1','3','0');
+INSERT INTO `xmlagent`.`location` (`address`,`city`,`country`) VALUES ('Bul. Evrope 34','Novi Sad','Srbija');
+INSERT INTO `xmlagent`.`accommodation` (`reserved_from`,`reserved_to`,`description`,`free`,`name`,`rating`,`agent_id`,`location_id`,`category`) VALUES ('23.06.2018','27.06.2018','Odlicna usluga',1,'Putnik','5','1','4','0');
+INSERT INTO `xmlagent`.`location` (`address`,`city`,`country`) VALUES ('Fruskogorska 54','Novi Sad','Srbija');
