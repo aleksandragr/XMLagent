@@ -58,6 +58,9 @@ public class AccommodationSoap {
         }else if(env.equals("editAccommodation")) {
         	soapEnvelopeEditAcc(soapMessage);
         }
+        else if(env.equals("reserveAcc")) {
+        	soapEnvelopeReserveAcc(soapMessage);
+        }
         
         
 
@@ -74,6 +77,43 @@ public class AccommodationSoap {
 
         return soapMessage;
     }
+    
+    
+    
+    private static void soapEnvelopeReserveAcc(SOAPMessage soapMessage) throws SOAPException {
+        SOAPPart soapPart = soapMessage.getSOAPPart();
+
+        String myNamespace = "gs";
+        String myNamespaceURI = "http://www.travel.com/accommodation";
+
+        // SOAP Envelope
+        SOAPEnvelope envelope = soapPart.getEnvelope();
+        envelope.addNamespaceDeclaration(myNamespace, myNamespaceURI);
+        
+        
+
+        // SOAP Body
+        SOAPBody soapBody = envelope.getBody();
+        SOAPElement soapBodyElem = soapBody.addChildElement("setAccommodationOccupationDatesRequest", myNamespace);
+        SOAPElement soapBodyElem1 = soapBodyElem.addChildElement("id", myNamespace);
+        soapBodyElem1.addTextNode("5");
+        SOAPElement soapBodyElem2 = soapBodyElem.addChildElement("datefrom", myNamespace);
+        soapBodyElem2.addTextNode(accommodationDTO.getReservedFrom());
+        SOAPElement soapBodyElem3 = soapBodyElem.addChildElement("dateto", myNamespace);
+        soapBodyElem3.addTextNode(accommodationDTO.getReservedTo());
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     private static void soapEnvelopeAddAcc(SOAPMessage soapMessage) throws SOAPException {

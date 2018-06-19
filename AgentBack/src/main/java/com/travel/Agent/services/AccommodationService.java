@@ -239,13 +239,12 @@ public class AccommodationService {
 		 if(localDate.isAfter(reservedfrom) && localDate.isBefore(reservedto)) {
 			 accommodation.setFree(false);
 		 }
-		 
-		
-		
-		
-		
-		
+
 		accommodationRepository.save(accommodation);
+
+		
+		AccommodationSoap accommodationSoap = new AccommodationSoap();
+		accommodationSoap.accommodationSoap("reserveAcc", acc);
 		
 		return accommodation;
 	}
