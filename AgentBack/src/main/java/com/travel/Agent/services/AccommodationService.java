@@ -15,6 +15,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.concretepage.gs_ws.GetDistinctTypesResponse;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.travel.Agent.dto.AccommodationDTO;
 import com.travel.Agent.model.Accommodation;
@@ -28,6 +29,7 @@ import com.travel.Agent.repositories.AgentRepository;
 import com.travel.Agent.repositories.LocationRepository;
 import com.travel.Agent.repositories.RoomRepository;
 import com.travel.Agent.soap.AccommodationSoap;
+import com.travel.Agent.soap.TypeAccommodationSoap;
 
 @Service
 public class AccommodationService {
@@ -247,6 +249,23 @@ public class AccommodationService {
 		accommodationSoap.accommodationSoap("reserveAcc", acc);
 		
 		return accommodation;
+	}
+	
+	
+	public List<String> getAllTypesAcc(){
+		
+		TypeAccommodationSoap typeaccSoap = new TypeAccommodationSoap();
+		
+		GetDistinctTypesResponse response = typeaccSoap.typeAccommodationSoap("getTypes");
+		
+		ArrayList<String> ret = new ArrayList<>();
+		if(ret!=null) {
+			ret.addAll(response.getTypes());
+		}
+		
+		
+		return ret;
+		
 	}
 	
 }

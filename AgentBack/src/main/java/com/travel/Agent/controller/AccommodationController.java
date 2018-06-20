@@ -97,4 +97,16 @@ public class AccommodationController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
+	
+	@GetMapping("/getacctypes")
+	public ResponseEntity<List<String>> getAccTypes(){
+		
+		List<String> services = accommodationService.getAllTypesAcc();
+		
+		
+		if(services!=null) {
+			return new ResponseEntity<>(services,HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 }
