@@ -92,6 +92,8 @@ public class PricePlanSoap {
         SOAPElement soapBodyElem1 = soapBodyElem.addChildElement("roomtype", myNamespace);
         soapBodyElem1.addTextNode(Integer.toString(priceplanDTO.getRoomType()));
         
+        
+        
         SOAPElement soapBodyElem2 = soapBodyElem.addChildElement("januaryprice", myNamespace);
         soapBodyElem2.addTextNode(Integer.toString(priceplanDTO.getJanuary()));
         
