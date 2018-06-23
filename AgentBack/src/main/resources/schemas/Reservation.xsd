@@ -6,18 +6,22 @@
     xmlns:reg="http://www.travel.com/reguser">
     <xs:import namespace="http://www.travel.com/room" schemaLocation="Room.xsd"/>
     <xs:import namespace="http://www.travel.com/reguser" schemaLocation="RegUser.xsd"/>
+    <xs:import namespace="http://www.travel.com/accommodation" schemaLocation="Accommodation.xsd"/>
     <xs:element name="Reservation">
         <xs:complexType>
             <xs:sequence>
             	<xs:element name="Id" type="xs:long"/>
                 <xs:element name="Price" type="xs:int" default="0"/>
-                <xs:element name="StartDate" type="xs:dateTime"/>
-                <xs:element name="EndDate" type="xs:dateTime"/>
+                <xs:element name="StartDate" type="xs:string"/>
+                <xs:element name="EndDate" type="xs:string"/>
                 <xs:element name="Name" type="xs:string"/>
                 <xs:element name="Surname" type="xs:string"/>
                 <xs:element name="Email" type="xs:string"/>
-                <xs:element ref="roo:Room"/>
+                <xs:element ref="ac:Accommodation"/>
                 <xs:element ref="reg:RegUser"/>
+                <xs:element name="RoomType" type="xs:string"/>
+               	<xs:element name="Accepted" type="xs:boolean"/>
+               	<xs:element name="Deleted" type="xs:boolean"/>    
             </xs:sequence>
         </xs:complexType>
     </xs:element>

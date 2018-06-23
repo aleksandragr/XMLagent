@@ -24,6 +24,9 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
+
+
+
 /**
  * <p>Java class for anonymous complex type.
  * 
@@ -36,13 +39,16 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence&gt;
  *         &lt;element name="Id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="Price" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
- *         &lt;element name="EndDate" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
+ *         &lt;element name="StartDate" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="EndDate" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="Surname" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="Email" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element ref="{http://www.travel.com/room}Room"/&gt;
+ *         &lt;element ref="{http://www.travel.com/accommodation}Accommodation"/&gt;
  *         &lt;element ref="{http://www.travel.com/reguser}RegUser"/&gt;
+ *         &lt;element name="RoomType" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="Accepted" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="Deleted" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -60,52 +66,49 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "name",
     "surname",
     "email",
-    "room",
-    "regUser"
+    "accommodation",
+    "regUser",
+    "roomType",
+    "accepted",
+    "deleted"
 })
 @XmlRootElement(name = "Reservation", namespace = "http://www.travel.com/reservation")
 @Entity
 public class Reservation {
 
-	@Id
+	 @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @XmlElement(name = "Id", namespace = "http://www.travel.com/reservation")
     protected long id;
-	
-	@Column
     @XmlElement(name = "Price", namespace = "http://www.travel.com/reservation", defaultValue = "0")
     protected int price;
-		
     @XmlElement(name = "StartDate", namespace = "http://www.travel.com/reservation", required = true)
-    @XmlSchemaType(name = "date")
     protected String startDate;
-	
     @XmlElement(name = "EndDate", namespace = "http://www.travel.com/reservation", required = true)
-    @XmlSchemaType(name = "date")
     protected String endDate;
-	
-	@Column
     @XmlElement(name = "Name", namespace = "http://www.travel.com/reservation", required = true)
     protected String name;
-	
-	@Column
     @XmlElement(name = "Surname", namespace = "http://www.travel.com/reservation", required = true)
     protected String surname;
-	
-	@Column
     @XmlElement(name = "Email", namespace = "http://www.travel.com/reservation", required = true)
     protected String email;
-	
-	@ManyToOne
-    @XmlElement(name = "Room", namespace = "http://www.travel.com/room", required = true)
-    protected Room room;
-	
-	@OneToOne
+    
+    @ManyToOne
+    @XmlElement(name = "Accommodation", required = true)
+    protected Accommodation accommodation;
+    
+    @ManyToOne
     @XmlElement(name = "RegUser", namespace = "http://www.travel.com/reguser", required = true)
     protected RegUser regUser;
+    
+    @XmlElement(name = "RoomType", namespace = "http://www.travel.com/reservation", required = true)
+    protected String roomType;
+    @XmlElement(name = "Accepted", namespace = "http://www.travel.com/reservation")
+    protected boolean accepted;
+    @XmlElement(name = "Deleted", namespace = "http://www.travel.com/reservation")
+    protected boolean deleted;
 
     /**
-     * 
      * Gets the value of the id property.
      * 
      */
@@ -142,10 +145,10 @@ public class Reservation {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-/*    public XMLGregorianCalendar getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
@@ -154,10 +157,10 @@ public class Reservation {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
- /*   public void setStartDate(XMLGregorianCalendar value) {
+    public void setStartDate(String value) {
         this.startDate = value;
     }
 
@@ -166,10 +169,10 @@ public class Reservation {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-   /* public XMLGregorianCalendar getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
@@ -178,10 +181,10 @@ public class Reservation {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-  /*  public void setEndDate(XMLGregorianCalendar value) {
+    public void setEndDate(String value) {
         this.endDate = value;
     }
 
@@ -258,27 +261,27 @@ public class Reservation {
     }
 
     /**
-     * Gets the value of the room property.
+     * Gets the value of the accommodation property.
      * 
      * @return
      *     possible object is
-     *     {@link Room }
+     *     {@link Accommodation }
      *     
      */
-    public Room getRoom() {
-        return room;
+    public Accommodation getAccommodation() {
+        return accommodation;
     }
 
     /**
-     * Sets the value of the room property.
+     * Sets the value of the accommodation property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Room }
+     *     {@link Accommodation }
      *     
      */
-    public void setRoom(Room value) {
-        this.room = value;
+    public void setAccommodation(Accommodation value) {
+        this.accommodation = value;
     }
 
     /**
@@ -305,20 +308,60 @@ public class Reservation {
         this.regUser = value;
     }
 
-	public String getStartDate() {
-		return startDate;
-	}
+    /**
+     * Gets the value of the roomType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRoomType() {
+        return roomType;
+    }
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
+    /**
+     * Sets the value of the roomType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRoomType(String value) {
+        this.roomType = value;
+    }
 
-	public String getEndDate() {
-		return endDate;
-	}
+    /**
+     * Gets the value of the accepted property.
+     * 
+     */
+    public boolean isAccepted() {
+        return accepted;
+    }
 
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	}
+    /**
+     * Sets the value of the accepted property.
+     * 
+     */
+    public void setAccepted(boolean value) {
+        this.accepted = value;
+    }
+
+    /**
+     * Gets the value of the deleted property.
+     * 
+     */
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    /**
+     * Sets the value of the deleted property.
+     * 
+     */
+    public void setDeleted(boolean value) {
+        this.deleted = value;
+    }
 
 }
