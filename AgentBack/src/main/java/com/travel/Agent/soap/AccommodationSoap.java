@@ -158,6 +158,8 @@ public class AccommodationSoap {
         
         SOAPElement soapBodyElem22 = soapBodyElem.addChildElement("picture", myNamespace);
         soapBodyElem22.addTextNode(accommodationDTO.getPicture());
+        SOAPElement soapBodyElem23 = soapBodyElem.addChildElement("category", myNamespace);
+        soapBodyElem23.addTextNode(Integer.toString(accommodationDTO.getCategory()));
         
         for(int i=0;i<accommodationDTO.getAditionalServices().size();i++) {
         	SOAPElement soapBodyElem21 = soapBodyElem.addChildElement("services", myNamespace);
