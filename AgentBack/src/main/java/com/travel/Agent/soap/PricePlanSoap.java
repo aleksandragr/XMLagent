@@ -6,6 +6,7 @@ import javax.xml.soap.*;
 
 import com.travel.Agent.dto.AccommodationDTO;
 import com.travel.Agent.dto.PricePlanDTO;
+import com.travel.Agent.model.PricePlan;
 
 
 public class PricePlanSoap {
@@ -13,11 +14,11 @@ public class PricePlanSoap {
 	
 	private String soapEndpointUrl = "http://localhost:8085/accommodationws";
     private String soapAction = "http://www.travel.com/accommodation/setAccommodationStatusRequest";
-    private static PricePlanDTO priceplanDTO;
+    private static PricePlan priceplanDTO;
     
     private static String env;
     
-    public void pricePlanSoap(String env,PricePlanDTO p) {
+    public void pricePlanSoap(String env,PricePlan p) {
     	this.priceplanDTO = p;
     	this.env = env;
     	
@@ -131,7 +132,7 @@ public class PricePlanSoap {
         soapBodyElem13.addTextNode(Integer.toString(priceplanDTO.getDecember()));
        
         SOAPElement soapBodyElem14 = soapBodyElem.addChildElement("id", myNamespace);
-        soapBodyElem14.addTextNode(Integer.toString(priceplanDTO.getIdAccommodation()));
+        soapBodyElem14.addTextNode(Long.toString(priceplanDTO.getId()));
         
     }
 
