@@ -66,10 +66,8 @@ public class AccommodationService {
 		
 		
 		//create AGENT 
-		//long agentid = acc.getIdAgent();
-		int y = 1;
-		Long id = new Long(y);
-		Agent agent = agentRepository.findByIdEquals(id);
+		long agentid = acc.getIdAgent();		
+		Agent agent = agentRepository.findByIdEquals(agentid);
 		
 		
 		//careate ACCOMMODATION

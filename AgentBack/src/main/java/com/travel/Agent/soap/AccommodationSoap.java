@@ -125,7 +125,7 @@ public class AccommodationSoap {
         // SOAP Envelope
         SOAPEnvelope envelope = soapPart.getEnvelope();
         envelope.addNamespaceDeclaration(myNamespace, myNamespaceURI);
-        
+        System.out.println("wwwww");
 
         // SOAP Body
         SOAPBody soapBody = envelope.getBody();
@@ -165,9 +165,9 @@ public class AccommodationSoap {
         	SOAPElement soapBodyElem21 = soapBodyElem.addChildElement("services", myNamespace);
             soapBodyElem21.addTextNode(accommodationDTO.getAditionalServices().get(i));    	
         }
-        
-        
-        
+       
+        SOAPElement soapBodyElem26 = soapBodyElem.addChildElement("agentid", myNamespace);
+        soapBodyElem26.addTextNode(Long.toString(accommodationDTO.getIdAgent()));
         
     }
     
