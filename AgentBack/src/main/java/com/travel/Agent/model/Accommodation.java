@@ -128,7 +128,11 @@ public class Accommodation {
     @XmlElement(name = "Category", defaultValue = "0")
     protected int category;
 	
-
+	@Column
+	@XmlElement(required = true)
+	protected String picture;
+	
+	
     /**
      * Gets the value of the id property.
      * 
@@ -388,5 +392,30 @@ public class Accommodation {
      * 
      * 
      */
+    
+    /**
+     * Gets the value of the picture property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPicture() {
+        return picture;
+    }
+
+    /**
+     * Sets the value of the picture property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPicture(String value) {
+        this.picture = value;
+    }
+
 
 }

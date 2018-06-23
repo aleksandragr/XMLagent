@@ -18,6 +18,7 @@
                 <xs:element name="Rating" type="xs:int" default="5"/>
                 <xs:element name="Free" type="xs:boolean" default="true"/>               
                 <xs:element ref="ac:AdditionalServices"/>
+                <xs:element name="picture" type="xs:string"/>
                 <xs:element name="Category" default="0">
                     <xs:simpleType>
                         <xs:restriction base="xs:int">

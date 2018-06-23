@@ -80,7 +80,8 @@ public class AccommodationService {
 		accommodation.setRating(acc.getRating());
 		accommodation.setFree(true);
 		accommodation.setCategory(acc.getCategory());
-		
+		System.out.println("Pictureeee " + acc.getPicture());
+		accommodation.setPicture(acc.getPicture());
 		
 		accommodation.setLocation(location);
 		accommodation.setAgent(agent);
