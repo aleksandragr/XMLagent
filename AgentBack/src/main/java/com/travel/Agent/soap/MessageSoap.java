@@ -12,8 +12,8 @@ import com.travel.Agent.dto.MessageDto;
 public class MessageSoap {
 
 	
-	private String soapEndpointUrl = "http://localhost:8085/accommodationws";
-    private String soapAction = "http://www.travel.com/accommodation/setAccommodationStatusRequest";
+	private String soapEndpointUrl = "http://localhost:8085/agentws";
+    private String soapAction = "http://www.travel.com/agent/answerAgentRequest";
     
     
     private static String env;
@@ -83,17 +83,17 @@ public class MessageSoap {
         SOAPPart soapPart = soapMessage.getSOAPPart();
 
         String myNamespace = "gs";
-        String myNamespaceURI = "http://www.travel.com/accommodation";
+        String myNamespaceURI = "http://www.travel.com/agent";
 
         // SOAP Envelope
         SOAPEnvelope envelope = soapPart.getEnvelope();
         envelope.addNamespaceDeclaration(myNamespace, myNamespaceURI);
         
-        
-
+        System.out.println("Content: " + messagedto.getCommentcontent());
+        System.out.println("ID: " + messagedto.getUserid());
         // SOAP Body
         SOAPBody soapBody = envelope.getBody();
-        SOAPElement soapBodyElem = soapBody.addChildElement("AnswerAgentRequest", myNamespace);
+        SOAPElement soapBodyElem = soapBody.addChildElement("answerAgentRequest", myNamespace);
         SOAPElement soapBodyElem1 = soapBodyElem.addChildElement("content", myNamespace);
         soapBodyElem1.addTextNode(messagedto.getCommentcontent());
         SOAPElement soapBodyElem2 = soapBodyElem.addChildElement("reguserid", myNamespace);
