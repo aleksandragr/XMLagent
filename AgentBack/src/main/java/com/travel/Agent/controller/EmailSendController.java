@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.travel.Agent.dto.MessageDto;
 import com.travel.Agent.model.RegUser;
 import com.travel.Agent.services.EmailService;
+import com.travel.Agent.soap.MessageSoap;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,6 +38,16 @@ public class EmailSendController {
 			logger.info("Greska prilikom slanja emaila" + e.getMessage());
 		}
 		return null;	
+		
+	}
+	
+	@PostMapping("/sendEmailSoap")
+	public String sendEmailSoap (@RequestBody MessageDto messagedto) {
+		
+		emailService.sendMessage(messagedto);
+		
+		
+		return "aaaaa";	
 		
 	}
 

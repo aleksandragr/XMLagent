@@ -64,4 +64,17 @@ public class AdditionalServicesController {
 		
 	}
 	
+	@GetMapping("/getcategory")
+	public ResponseEntity<List<String>> getsergetcategoryvices(){
+		
+		List<String> category = additionalServicesService.getCategory();
+		
+		
+		if(category!=null) {
+			return new ResponseEntity<>(category,HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
 }

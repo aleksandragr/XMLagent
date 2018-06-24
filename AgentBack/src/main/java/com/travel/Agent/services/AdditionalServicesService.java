@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.concretepage.gs_ws.GetDistinctCategoriesResponse;
 import com.concretepage.gs_ws.GetDistinctServicesResponse;
 import com.travel.Agent.model.Accommodation;
 import com.travel.Agent.model.AdditionalServices;
@@ -13,6 +14,7 @@ import com.travel.Agent.repositories.AccommodationRepository;
 import com.travel.Agent.repositories.AdditionalServicesRepository;
 import com.travel.Agent.soap.AccommodationSoap;
 import com.travel.Agent.soap.AdditionalServiceSoap;
+import com.travel.Agent.soap.CategorySoap;
 
 @Service
 public class AdditionalServicesService {
@@ -65,4 +67,21 @@ public class AdditionalServicesService {
 		
 		return as;
 	}
+	
+	
+	
+	
+	public List<String> getCategory(){
+		
+		CategorySoap catsoap = new CategorySoap();
+		GetDistinctCategoriesResponse getcate = catsoap.additionalServiceSoap("getCategory");
+		
+		List<String> stringoi = new ArrayList<>();
+		for(int i = 0 ;i<getcate.getCategories().size();i++) {
+			stringoi.add(getcate.getCategories().get(i));
+		}
+		
+		return stringoi;
+	}
+	
 }

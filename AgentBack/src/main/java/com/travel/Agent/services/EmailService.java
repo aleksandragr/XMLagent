@@ -2,7 +2,9 @@ package com.travel.Agent.services;
 
 import org.springframework.stereotype.Service;
 
+import com.travel.Agent.dto.MessageDto;
 import com.travel.Agent.model.RegUser;
+import com.travel.Agent.soap.MessageSoap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -37,5 +39,13 @@ public class EmailService {
 		
 	}
 	
+	
+	
+	public void sendMessage(MessageDto mess) {
+		
+		
+		MessageSoap messagesoap = new MessageSoap();
+		messagesoap.sendMessageSoap("sendMail",mess);
+	}
 
 }
