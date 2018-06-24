@@ -77,7 +77,7 @@ public class PricePlan {
 	
 	@Column
     @XmlElement(name = "RoomType", defaultValue = "2")
-    protected int roomType;
+    protected int roomtype;
 	
 	
 	
@@ -131,7 +131,7 @@ public class PricePlan {
      * 
      */
     public int getRoomType() {
-        return roomType;
+        return roomtype;
     }
 
     /**
@@ -139,7 +139,7 @@ public class PricePlan {
      * 
      */
     public void setRoomType(int value) {
-        this.roomType = value;
+        this.roomtype = value;
     }
 
    

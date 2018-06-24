@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import org.hibernate.annotations.Cascade;
+
 
 
 
@@ -92,7 +94,7 @@ public class Reservation {
     protected String surname;
     @XmlElement(name = "Email", namespace = "http://www.travel.com/reservation", required = true)
     protected String email;
-    
+    protected String nameAccommodation;
     @ManyToOne
     @XmlElement(name = "Accommodation", required = true)
     protected Accommodation accommodation;
@@ -363,5 +365,13 @@ public class Reservation {
     public void setDeleted(boolean value) {
         this.deleted = value;
     }
+
+	public String getNameAccommodation() {
+		return nameAccommodation;
+	}
+
+	public void setNameAccommodation(String nameAccommodation) {
+		this.nameAccommodation = nameAccommodation;
+	}
 
 }

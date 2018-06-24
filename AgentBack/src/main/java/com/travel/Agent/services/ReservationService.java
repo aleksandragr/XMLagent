@@ -30,6 +30,7 @@ public class ReservationService {
 		
 		for(int i = 0; i<listRes.getReservation().size();i++) {
 			Reservation res = new Reservation();
+			
 			res.setId(listRes.getReservation().get(i).getId());
 			res.setEmail(listRes.getReservation().get(i).getEmail());
 			res.setName(listRes.getReservation().get(i).getName());
@@ -38,11 +39,11 @@ public class ReservationService {
 			res.setEndDate(listRes.getReservation().get(i).getEndDate());
 			res.setAccepted(listRes.getReservation().get(i).isAccepted());
 			res.setDeleted(listRes.getReservation().get(i).isDeleted());
-			res.setAccommodation(accommodationRepository.findByIdEquals(listRes.getReservation().get(i).getAccommodation().getId()));
 			//res.setRegUser(listRes.getReservation().get(i).getRegUser());
 			res.setPrice(listRes.getReservation().get(i).getPrice());
 			res.setRoomType(listRes.getReservation().get(i).getRoomType());
-			
+			res.setAccommodation(accommodationRepository.findByIdEquals(listRes.getReservation().get(i).getAccommodation().getId()));
+
 			if(!res.isDeleted()) {
 				if(!res.isAccepted()) {
 					listReservations.add(res);

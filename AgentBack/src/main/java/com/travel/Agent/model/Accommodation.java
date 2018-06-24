@@ -95,12 +95,12 @@ public class Accommodation {
     protected String type;
 	
 	@Column
-	@XmlElement(name = "ReservedFrom", required = true)
-    protected String reservedFrom;
+	@XmlElement(name = "reservedfrom", required = true)
+    protected String reservedfrom;
 	
 	@Column
-    @XmlElement(name = "ReservedTo", required = true)
-    protected String reservedTo;
+    @XmlElement(name = "reservedto", required = true)
+    protected String reservedto;
 	
 	
 	@OneToOne
@@ -208,7 +208,7 @@ public class Accommodation {
      *     
      */
     public String getReservedFrom() {
-        return reservedFrom;
+        return reservedfrom;
     }
 
     /**
@@ -220,7 +220,7 @@ public class Accommodation {
      *     
      */
     public void setReservedFrom(String value) {
-        this.reservedFrom = value;
+        this.reservedfrom = value;
     }
 
     /**
@@ -232,7 +232,7 @@ public class Accommodation {
      *     
      */
     public String getReservedTo() {
-        return reservedTo;
+        return reservedto;
     }
 
     /**
@@ -244,7 +244,7 @@ public class Accommodation {
      *     
      */
     public void setReservedTo(String value) {
-        this.reservedTo = value;
+        this.reservedto = value;
     }
     
     
