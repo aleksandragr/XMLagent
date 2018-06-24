@@ -27,7 +27,7 @@ public class PricePlanService {
 		
 		if(pricePdto.getRoomType()!=0) {
 			
-			PricePlan pp = pricePlanRepository.findByRoomTypeEqualsAndAccommodation_idEquals(pricePdto.getRoomType(), accommodation.getId());
+			PricePlan pp = pricePlanRepository.findByRoomtypeEqualsAndAccommodation_idEquals(pricePdto.getRoomType(), accommodation.getId());
 			
 			if(pp==null) {
 			
